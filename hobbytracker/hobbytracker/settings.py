@@ -1,3 +1,4 @@
+
 """
 Django settings for hobbytracker project.
 
@@ -20,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'm-st60-t+0&cwlcd3hdcl%9=d*yp)p7grp!cp6(1kr#c#gasm='
+SECRET_KEY = '5*bzt65m^26$3y70^zs+&b_10j_-e)06_gq^=7m&*xt8dj76n4'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
