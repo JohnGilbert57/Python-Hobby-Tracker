@@ -5,6 +5,5 @@ Hi -Nathaniel
 Signed -Taylor Miller
 
 Running Instructions:
-After cloning-> python3.7 manage.py runserver
+After cloning-> "python3.7 manage.py runserver"  ->
 follow link in output
-
