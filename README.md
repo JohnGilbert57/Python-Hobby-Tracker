@@ -5,7 +5,7 @@
     - Session: afternoon
 # Team Members
     - Johnny Gilbert
-    - Nathaniel Bennett
+    - Nathan Bennett
     - Spencer Deuscher
     - Taylor Miller
     - Nathaniel Buchanan
