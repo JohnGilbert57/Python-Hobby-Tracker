@@ -27,7 +27,8 @@ SECRET_KEY = '5*bzt65m^26$3y70^zs+&b_10j_-e)06_gq^=7m&*xt8dj76n4'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# This will need to change if public IP changes
+ALLOWED_HOSTS = ["69.133.64.166","192.168.1.195","127.0.0.1","localhost"]
 
 
 # Application definition
@@ -56,7 +57,7 @@ ROOT_URLCONF = 'hobbytracker.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [r'/mnt/d/CS3560/FinalProject/Python-Hobby-Tracker/hobbytracker/myapp/templates'],
+        'DIRS': [r'/mnt/d/CS3560/FinalProject/Python-Hobby-Tracker/hobbytracker/myapp/templates'], # This problem could be solved using environment variables
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
