@@ -17,7 +17,7 @@ import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
+TEMPLATE_DIR = os.path.join(BASE_DIR,"myapp/templates")
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
@@ -57,7 +57,7 @@ ROOT_URLCONF = 'hobbytracker.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [r'/mnt/d/CS3560/FinalProject/Python-Hobby-Tracker/hobbytracker/myapp/templates'], # This problem could be solved using environment variables
+        'DIRS': [TEMPLATE_DIR], # This problem could be solved using environment variables
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -120,4 +120,6 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = '/myapp/static/'
+#STATICFILES_DIR = [os.path.join(BASE_DIR, "static"), '/myapp/static',]
+#STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
