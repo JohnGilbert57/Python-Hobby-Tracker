@@ -16,6 +16,7 @@ import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+ROOT_PATH = os.path.dirname(__file__)
 
 TEMPLATE_DIR = os.path.join(BASE_DIR,"myapp/templates")
 # Quick-start development settings - unsuitable for production
@@ -34,6 +35,7 @@ ALLOWED_HOSTS = ["69.133.64.166","192.168.1.195","127.0.0.1","localhost"]
 # Application definition
 
 INSTALLED_APPS = [
+    #'clearcache',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -120,6 +122,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-STATIC_URL = '/myapp/static/'
-#STATICFILES_DIR = [os.path.join(BASE_DIR, "static"), '/myapp/static',]
-#STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'myapp/static/'),
+]
+#STATIC_ROOT = os.path.join(BASE_DIR, 'myapp/static')

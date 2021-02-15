@@ -1,0 +1,23 @@
+body{
+    background-color: grey;
+}
+#header{
+    width: 110%;
+    height: 10%;
+    margin-top: -1%;
+    margin-left: -1%;
+    background-color:#024230;
+}
+#header p{
+    text-align: center;
+    color: white;
+    padding-top: 1.2%;
+    font-size: 200%;
+}
+#footer{
+    height: 10%;
+    width: 100%;
+    position: relative;
+    bottom: -85%;
+    background-color: #024230;
+}
