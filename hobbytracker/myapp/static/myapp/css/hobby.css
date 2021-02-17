@@ -1,0 +1,83 @@
+/*This is edited by:
+Nathaniel Buchanan
+Johnny Gilbert
+Ohio University*/
+/*style of the body of the website, remember to not use px and use percent instead*/
+body{
+    background-color: rgb(255, 255, 255);
+    font-family: georgia, serif;
+    margin:0%;
+    /*makes the page not have a horizontal scrolling*/
+    max-width: 100%;
+    /*hides the scroll for horizontal*/
+    overflow-x: hidden;
+}
+/*this is the table information with the font and width*/
+ table {
+    font-family: georgia, serif;
+    border-spacing: 10px; /*only px seems to work here*/
+    font-size: 90%;
+    /*width: 30%*/
+} 
+
+/*used while making the table*/
+td{
+    text-align: left;
+    padding: 0%;
+    color:rgb(231,236,195);
+}
+
+/*used for the headings of the table to be bold and different color*/
+th{
+    text-align: left;
+    padding: 0%;
+    color: rgb(170,138,0);
+}
+
+/*this makes the hyperlinks white*/
+a:link, a:visited{
+    color: rgb(255, 255, 255);
+    background-color: transparent;
+    text-decoration: none;
+}
+/*used when hovering over hyperlink*/
+a:hover {
+    color: rgb(154, 206, 96);
+}
+
+/*style of the image at the top*/
+img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/*style the header of the website*/
+#header{
+    width: 100%;
+    height: 10%;
+    float: right;
+    margin-top: -1%;
+    margin-left: -1%;
+    /*padding: 200%, 200%;*/
+    background-color:#024230;
+}
+
+/*style of the title of the page*/
+#header p{
+    text-align: center;
+    color: rgb(255, 255, 255);
+    padding-top: 1.2%;
+    font-size: 200%;
+}
+
+/*styles the footer of the website*/
+#footer{
+    height: 25%; 
+    width: 100%;
+    float: right, bottom;
+    position: relative;
+    color: rgb(255, 255, 255);
+    bottom: -100%;
+    background-color: #024230;
+}

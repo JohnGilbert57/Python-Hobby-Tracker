@@ -12,11 +12,13 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+ROOT_PATH = os.path.dirname(__file__)
 
-
+TEMPLATE_DIR = os.path.join(BASE_DIR,"myapp/templates")
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
@@ -26,12 +28,14 @@ SECRET_KEY = '5*bzt65m^26$3y70^zs+&b_10j_-e)06_gq^=7m&*xt8dj76n4'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# This will need to change if public IP changes
+ALLOWED_HOSTS = ["69.133.64.166","192.168.1.195","127.0.0.1","localhost"]
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    #'clearcache',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -55,7 +59,7 @@ ROOT_URLCONF = 'hobbytracker.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [TEMPLATE_DIR], # This problem could be solved using environment variables
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -119,3 +123,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'myapp/static/'),
+]
+#STATIC_ROOT = os.path.join(BASE_DIR, 'myapp/static')
