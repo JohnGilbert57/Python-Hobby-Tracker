@@ -4,13 +4,13 @@ Johnny Gilbert
 Ohio University*/
 /*style of the body of the website, remember to not use px and use percent instead*/
 body{
-    background-color: rgb(255, 255, 255);
     font-family: georgia, serif;
     margin:0%;
     /*makes the page not have a horizontal scrolling*/
     max-width: 100%;
     /*hides the scroll for horizontal*/
     overflow-x: hidden;
+    background-color: rgb(255, 255, 255);
 }
 /*this is the table information with the font and width*/
  table {
@@ -66,18 +66,20 @@ img{
 /*style of the title of the page*/
 #header p{
     text-align: center;
-    color: rgb(255, 255, 255);
-    padding-top: 1.2%;
+    margin: auto;
+    padding-top: 2%;
     font-size: 200%;
+    color: rgb(255, 255, 255);
 }
 
 /*styles the footer of the website*/
 #footer{
     height: 25%; 
     width: 100%;
+    /*have the footer at the bottom and stretch across*/
     float: right, bottom;
     position: relative;
-    color: rgb(255, 255, 255);
     bottom: -100%;
+    color: rgb(255, 255, 255);
     background-color: #024230;
 }
