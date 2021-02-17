@@ -1,0 +1,8 @@
+#ignore all files
+*.pyc
+*.log
+*.pot
+
+#ignore files
+__pycache__/
+db.sqlite3
