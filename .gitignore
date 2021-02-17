@@ -1,8 +1,6 @@
-#ignore all files
+#ignored files
 *.pyc
 *.log
 *.pot
-
-#ignore files
 __pycache__/
 db.sqlite3
