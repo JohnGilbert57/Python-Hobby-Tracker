@@ -3,3 +3,4 @@
 *.log
 *.pot
 __pycache__/
+pycache
