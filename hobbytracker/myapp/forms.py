@@ -1,3 +1,6 @@
+# Johnny Gilbert
+# Ohio University
+# the format for the user login; creates the objects basesd upon the models and sets the data
 from django import forms
 from .models import HobbyUser
 

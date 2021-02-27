@@ -1,3 +1,6 @@
+# Johnny Gilbert
+# Ohio University
+# template for meta-data; defines the variables for the Hobby and the User
 from django.db import models
 from django import forms
 

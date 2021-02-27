@@ -1,3 +1,6 @@
+# Johnny Gilbert
+# Ohio University
+# displays the UI for the application
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.conf import settings

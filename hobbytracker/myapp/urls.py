@@ -1,3 +1,6 @@
+# Johnny Gilbert
+# Ohio University
+# how we call our functions and sets the URL routes
 from django.urls import path
 from .views import user_login_form, new_user_form
 from . import views
