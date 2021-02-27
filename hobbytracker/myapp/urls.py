@@ -1,7 +1,8 @@
 from django.urls import path
-from .views import new_user_form
+from .views import user_login_form, new_user_form
 from . import views
 urlpatterns = [
-    path('', views.index, name = "index"),
-    path('create/', views.new_user_form)
+    path('task/', views.index, name = "index"),
+    path('', views.user_login_form),
+    path('createaccount/', views.new_user_form),
 ]

@@ -1,0 +1,14 @@
+{% load static %}
+<!DOCTYPE >
+<html>
+    <head>
+
+    </head>
+    <body>
+        <form action="" method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type = 'submit' value = 'Create Account' />
+        </form>
+    </body>
+</html>

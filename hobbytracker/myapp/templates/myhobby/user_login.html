@@ -9,7 +9,9 @@
             <!--For now, this just submits the form, creates the user, and redirects to index-->
             {% csrf_token %}
             {{ form.as_p }}
-            <input type = 'submit' value = 'Save' />
+            <input type = 'submit' value = 'Login' />
+            <br>
+            <a href = "/createaccount">Create Account</a>
         </form>
     </body>
 </html>

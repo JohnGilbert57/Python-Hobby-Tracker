@@ -1,7 +1,21 @@
 from django import forms
 from .models import HobbyUser
 
-class UserForm(forms.ModelForm):
+class UserLoginForm(forms.ModelForm):
+    class Meta:
+        model = HobbyUser
+        fields = [
+            'userName',
+            'password'
+        ]
+        widgets = {
+            'password': forms.PasswordInput()
+        }
+        labels ={
+            'userName': 'Username',
+            'password': 'Password'
+        }
+class NewUserForm(forms.ModelForm):
     class Meta:
         model = HobbyUser
         fields = [
@@ -10,3 +24,13 @@ class UserForm(forms.ModelForm):
             'userName',
             'password'
         ]
+        widgets = {
+            'password': forms.PasswordInput()
+        }
+        labels ={
+            'firstName': 'First Name', 
+            'lastName': 'Last Name',
+            'userName': 'Username',
+            'password': 'Password'
+
+        }
