@@ -13,6 +13,8 @@ class UserLoginForm(forms.ModelForm):
         ]
         widgets = {
             'password': forms.PasswordInput()
+            # 'password':forms.TextInput(attrs={'class': }),
+            # 'userName':forms.TextInput(attrs={'class': })
         }
         labels ={
             'userName': 'Username',
