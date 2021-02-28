@@ -1,0 +1,36 @@
+<!--Nathaniel Buchanan
+Ohio University
+Owner: Luke -  @Pyplane on YouTube
+Website: https://www.pyplane.com/
+Title: Django with Chart js | How to create charts with Django and Chart js
+Video: https://www.youtube.com/watch?v=1OL5n06kO_w
+The owner of the video said to feel free to use this code for your own projects.
+This also enables the user to NOT have to download chart.js . It all will call the links 
+instead. Very cool! It also includes the title and such for the webpage.
+-->
+
+<!doctype html>
+<html lang="en">
+   <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- semantic UI -->
+        <link rel="stylesheet" type='text/css' href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.14/semantic.min.css">
+        <!--Chart js-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" integrity="sha256-Uv9BNBucvCPipKQ2NS9wYpJmi8DTOEfTA/nH2aoJALw=" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css" integrity="sha256-aa0xaJgmK/X74WM224KMQeNQC2xYKwlAt08oZqjeF0E=" crossorigin="anonymous" />
+        <!-- jQuery -->
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <title>
+            {% block title %}{% endblock title %} 
+        </title>
+    </head>
+    <body>
+        {% block scripts %}
+        {% endblock scripts %}
+
+        {% block content %}
+        {% endblock content %}
+   </body>
+ </html>
