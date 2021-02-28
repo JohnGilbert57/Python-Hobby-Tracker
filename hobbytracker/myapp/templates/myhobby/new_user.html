@@ -1,5 +1,6 @@
 <!--This is edited by:
 Johnny Gilbert
+Nathaniel Buchanan
 Ohio University-->
 {% load static %}
 <!DOCTYPE >
@@ -8,10 +9,15 @@ Ohio University-->
         <link rel = "stylesheet" type = "text/css" href="{% static 'myapp/css/user_login.css' %}">
     </head>
     <body>
-        <form action="" method="POST">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <input type = 'submit' value = 'Create Account' />
-        </form>
+        <div id = "formComponents">  
+            <img>
+                <img id = logo src = "{% static 'myapp/img/background/logo3.png' %}"width = "64" height="64" alt = "Hobby Tracker" class="center">
+            </img>
+            <form action="" method="POST" id = "forms">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type = 'submit' name = "Create" id = "Create" value = 'Create Account' />
+            </form>
+        </div>
     </body>
 </html>
