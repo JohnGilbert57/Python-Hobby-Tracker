@@ -1,0 +1,26 @@
+#header{
+    width: 100%;
+    height: 10%;
+    float: right;
+    margin-top: -1%;
+    margin-left: -1%;
+    /*padding: 200%, 200%;*/
+    background-color:#024230;
+}
+#header p{
+    text-align: center;
+    margin: auto;
+    padding-top: 2%;
+    font-size: 200%;
+    color: rgb(255, 255, 255);
+}
+#footer{
+    height: 25%; 
+    width: 100%;
+    /*have the footer at the bottom and stretch across*/
+    float: right, bottom;
+    position: relative;
+    bottom: -100%;
+    color: rgb(255, 255, 255);
+    background-color: #024230;
+}

@@ -3,6 +3,7 @@
 # template for meta-data; defines the variables for the Hobby and the User
 from django.db import models
 from django import forms
+from django.db.models.signals import post_save
 
 class HobbyUser(models.Model):
     # Data fields
