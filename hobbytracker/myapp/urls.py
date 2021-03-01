@@ -1,11 +1,13 @@
 # Johnny Gilbert
 # Ohio University
 # how we call our functions and sets the URL routes
-from django.urls import path
-from .views import user_login_form, new_user_form
+from django.contrib import admin
+from django.urls import path, include
+from .views import user_login_form, new_user_form, hobbiespage
 from . import views
 urlpatterns = [
-    path('task/', views.index, name = "index"),
-    path('', views.user_login_form),
-    path('createaccount/', views.new_user_form),
+    path('userhobbies/task/', views.index, name = "index"),
+    path('', include("django.contrib.auth.urls")),
+    path('createaccount/', views.new_user_form, name = "register"),
+    path('userhobbies/', views.hobbiespage)
 ]

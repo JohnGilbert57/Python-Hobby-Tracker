@@ -6,14 +6,14 @@ Ohio University-->
 <!DOCTYPE >
 <html>
     <head>
-        <link rel = "stylesheet" type = "text/css" href="{% static 'myapp/css/user_login.css' %}">
+        <link rel = "stylesheet" type = "text/css" href="{% static 'myapp/css/createuser.css' %}">
     </head>
     <body>
         <div id = "formComponents">  
             <img>
                 <img id = logo src = "{% static 'myapp/img/background/logo3.png' %}"width = "64" height="64" alt = "Hobby Tracker" class="center">
             </img>
-            <form action="" method="POST" id = "forms">
+            <form action="" method="POST" id = "forms" class = "form-group">
                 {% csrf_token %}
                 {{ form.as_p }}
                 <input type = 'submit' name = "Create" id = "Create" value = 'Create Account' />
