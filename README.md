@@ -39,6 +39,6 @@
     - Getting to the proper directory: "cd hobbytracker"
     - Deploying the app: python3.7 manage.py runserver
     - Getting to the local instance: open the browser of your choice
-    and type "127.0.0.1:8000" to access the app.
+      and type "127.0.0.1:8000" to access the app.
 # GitHub Repository
     - https://github.com/OU-CS3560/Python-Hobby-Tracker.git
