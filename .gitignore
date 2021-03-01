@@ -4,4 +4,3 @@
 *.pot
 __pycache__/
 pycache
-db.sqlite3
