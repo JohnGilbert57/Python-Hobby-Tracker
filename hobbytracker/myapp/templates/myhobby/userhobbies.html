@@ -2,17 +2,22 @@
 <!DOCTYPE >
 <html>
     <head>
-        <link rel = "stylesheet" type = "text/css" href="{% static 'myapp/css/hobbies.css' %}">
+        <link rel = "stylesheet" type = "text/css" href="{% static 'myapp/css/userhobbies.css' %}">
     </head>
     <body>
         <div id = header>
-            <p>Python Hobby Tracker</p>
+            <p>Python Hobby Tracker</p>  
         </div>
-        <h1> Hobbies </h1>
-        <p>Logged in as {{user.username}}</p>
-        <a href = "{% url 'logout' %}"> Logout </a>
+        <div id = credentials>
+            <p>{{user.username}}</p>
+            <a href = "{% url 'logout' %}">Logout</a>
+        </div>
+        <form method = "POST" action = "create">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type = 'submit' name = "Create" id = "Create" value = 'Create' />
+        </form>
         <div id = footer>
-        
             <!--This is all of the table information, th is bolded, tr is not-->
                 <table>
                     <tr>
@@ -47,7 +52,7 @@
                     </tr>
                 </table>
                 <!--Ohio University website-->
-                <p><a href=https://www.ohio.edu/>&nbsp&nbspOhio University<a></p>
+                <p><a href=https://www.ohio.edu>&nbsp&nbspOhio University<a></p>
             </div>
     </body>
-</html>
+</html>  
