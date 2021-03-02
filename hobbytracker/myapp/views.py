@@ -8,7 +8,7 @@ from .forms import UserLoginForm, NewUserForm
 from .models import HobbyUser
 from django.shortcuts import redirect
 from django.views import generic
-
+from django.contrib.auth import *
 
 # Create your views here.
 def index(request):
@@ -35,9 +35,11 @@ def new_user_form(response):
         'form': form
     }
     return render(response, './myhobby/new_user.html', context)
-def hobbiespage(response):
-    return render(response, './myhobby/userhobbies.html')
+def hobbiespage(request):
+    if request.user.is_anonymous:
+        return redirect('/login')
+
+    return render(request, './myhobby/userhobbies.html')
 def baseUrl(response):
     return redirect('/login')
-
 
