@@ -21,6 +21,19 @@ class UserLoginForm(forms.ModelForm):
             'userName': 'Username',
             'password': 'Password'
         }
+# class HobbyList(forms.ModelForm):
+#     class Meta:
+#         model = Hobby
+#         fields = [
+#             'hobby',
+#             'goal'
+#         ]
+#         labels = {
+#             'hobby': 'Hobby',
+#             'goal': 'Goal'
+#         }
+
+
 class NewUserForm(UserCreationForm):
     class Meta:
         model = User

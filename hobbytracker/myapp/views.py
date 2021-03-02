@@ -35,6 +35,19 @@ def new_user_form(response):
         'form': form
     }
     return render(response, './myhobby/new_user.html', context)
-def hobbiespage(request):
-    return render(request, './myhobby/userhobbies.html')
+def hobbiespage(response):
+    if response.method == "POST":
+        form = HobbyList(response.POST)
+        if form.is_valid():
+            n = form.cleaned_data["hobby"]
+            response.user.Hobby_set.create(hobby=n)
+    else:
+        form = HobbyList()
+    context = {
+        'form': form
+    }
+    return render(response, './myhobby/userhobbies.html', context)
+def baseUrl(response):
+    return redirect('/login')
+
 
