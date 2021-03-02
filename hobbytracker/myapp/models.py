@@ -1,4 +1,5 @@
 # Johnny Gilbert
+# Nathaniel Buchanan
 # Ohio University
 # template for meta-data; defines the variables for the Hobby and the User
 from django.db import models
@@ -23,10 +24,11 @@ class Hobby(models.Model):
     # Data fields
     name = models.CharField(max_length=300)
     spriteId = models.IntegerField()
+    timeLimit = models.IntegerField()
 
     # Called when displaying raw data
     def __str__(self):
-        return self.name
+        return "{}-{}".format(self.name, self.time)
 
 class HobbyTime(models.Model):
     # Establish a foreign key relationship with Hobby
