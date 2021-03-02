@@ -12,6 +12,10 @@ Ohio University-->
         <div id = header>
             <p>Python Hobby Tracker</p>
         </div>
+        <div id = credentials>
+            <p>{{user.username}}</p>
+            <a href = "{% url 'logout' %}">Logout</a>
+        </div>
         <div id = hobby>
             <!--The test image that will change-->
             <br>

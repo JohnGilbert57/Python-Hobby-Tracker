@@ -5,7 +5,7 @@ Ohio University*/
 /*style of the body of the website, remember to not use px and use percent instead*/
 body{
     font-family: georgia, serif;
-    margin:0%;
+    margin:0;
     /*makes the page not have a horizontal scrolling*/
     max-width: 100%;
     /*hides the scroll for horizontal*/
@@ -54,11 +54,10 @@ img{
 
 /*style the header of the website*/
 #header{
+    margin-top: -2%;
     width: 100%;
-    height: 10%;
+    height: 100px;
     float: right;
-    margin-top: -1%;
-    margin-left: -1%;
     /*padding: 200%, 200%;*/
     background-color:#024230;
 }
@@ -67,6 +66,7 @@ img{
 #header p{
     text-align: center;
     margin: auto;
+    margin-top: 1.5%;
     padding-top: 2%;
     font-size: 200%;
     color: rgb(255, 255, 255);
@@ -74,7 +74,7 @@ img{
 
 /*styles the footer of the website*/
 #footer{
-    height: 25%; 
+    height: 225px; 
     width: 100%;
     /*have the footer at the bottom and stretch across*/
     float: right, bottom;
@@ -82,4 +82,13 @@ img{
     bottom: -100%;
     color: rgb(255, 255, 255);
     background-color: #024230;
+}
+#credentials{
+    position: relative;
+    float: right;
+    top: -75px;
+    text-align: right;
+    padding-right: 5%;
+    margin: 0;
+    color: white;
 }

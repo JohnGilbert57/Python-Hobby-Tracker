@@ -14,9 +14,9 @@ from django.views.generic import TemplateView
 from .models import Hobby
 
 # Create your views here.
-def index(request):
+def task(request):
     #return HttpResponse("Hello World")
-    return render(request, './myhobby/index.html')
+    return render(request, './myhobby/task.html')
 def user_login_form(request):
     form = UserLoginForm(request.POST or None)
     if(form.is_valid()):
