@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE >
+<html>
+    <head>
+        <link rel = "stylesheet" type = "text/css" href="{% static 'myapp/css/userhobbies.css' %}">
+    </head>
+    <body>
+        <div id = header>
+            <p>Python Hobby Tracker</p>  
+        </div>
+        <div id = credentials>
+            <p>{{user.username}}</p>
+            <a href = "{% url 'logout' %}">Logout</a>
+        </div>
+        <form method = "POST" action = "create">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type = 'submit' name = "Create" id = "Create" value = 'Create' />
+        </form>
+        <div id = footer>
+            <!--This is all of the table information, th is bolded, tr is not-->
+                <table>
+                    <tr>
+                        <th>Name</th> <!--The name of the individual-->
+                        <th>Email</th> <!--Their email (with hyperlink)-->
+                        <th>GitHub ID</th> <!--Their GitHub ID (with hyperlink)-->
+                    </tr>
+                    <tr>
+                        <td>Johnny Gilbert</td>
+                        <td><a href="mailto: jg480318@ohio.edu">jg480318@ohio.edu</a></td>
+                        <td><a href=https://github.com/JohnGilbert57>JohnGilbert57</a></td>
+                    </tr>
+                    <tr>
+                        <td>Nathan Bennett</td>
+                        <td><a href="mailto: nb566818@ohio.edu">nb566818@ohio.edu</a></td>
+                        <td><a href=https://github.com/nbennett2019>nbennett2019</a></td>
+                    </tr>
+                    <tr>
+                        <td>Nathaniel Buchanan</td>
+                        <td><a href="mailto: nb333218@ohio.edu">nb333218@ohio.edu</a></td>
+                        <td><a href=https://github.com/NathanielBuchanan>NathanielBuchanan</a></td></td>
+                    </tr>
+                    <tr>
+                        <td>Spencer Deuscher</td>
+                        <td><a href="mailto: sd621517@ohio.edu">sd621517@ohio.edu</a></td>
+                        <td><a href=https://github.com/SDeuscher>SDeuscher</a></td></td>
+                    </tr>
+                    <tr>
+                        <td>Taylor Miller</td>
+                        <td><a href="mailto: tm408518@ohio.edu">tm408518@ohio.edu</a></td>
+                        <td><a href=https://github.com/tm408518>tm408518</a></td>
+                    </tr>
+                </table>
+                <!--Ohio University website-->
+                <p><a href=https://www.ohio.edu>&nbsp&nbspOhio University<a></p>
+            </div>
+    </body>
+</html>  
