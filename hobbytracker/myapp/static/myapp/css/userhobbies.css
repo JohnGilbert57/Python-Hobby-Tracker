@@ -1,6 +1,16 @@
+/*Edited By:
+Johnny Gilbert
+Nathaniel Buchanan
+Ohio University
+*/
 body{
     margin: 0;
     padding: 0;
+    font-family: georgia, serif;
+    /*KEEP THE TWO LINES BELOW! THE KEEP FOOTER NICE 
+    FOR EVERY BROWSER*/
+    position: relative;
+    min-height: 100vh;
 }
 table {
     font-family: georgia, serif;
@@ -20,7 +30,7 @@ td{
     float: right;
     top: -75px;
     text-align: right;
-    padding-right: 5%;
+    padding-right: 10px;
     margin: 0;
     color: white;
 }
@@ -42,8 +52,6 @@ a:link, a:visited{
 a:hover {
     color: rgb(154, 206, 96);
 }
-
-/*style of the image at the top*/
 
 /*style the header of the website*/
 #header{
@@ -71,7 +79,12 @@ a:hover {
     width: 100%;
     /*have the footer at the bottom and stretch across*/
     float: right, bottom;
-    position: relative;
+    /*DO NOT REMOVE THE LINE BELOW THIS; USED FOR FOOTER*/
+    position: absolute;
+    /*DO NOT REMOVE THE LINE BELOW THIS; USED FOR FOOTER*/
+    bottom: 0;
+    /*DO NOT REMOVE THE LINE BELOW THIS; USED FOR FOOTER*/
+    width: 100%;
     bottom: -100%;
     color: rgb(255, 255, 255);
     background-color: #024230;

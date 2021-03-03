@@ -6,11 +6,16 @@ Ohio University*/
 body{
     font-family: georgia, serif;
     margin:0;
+    padding: 0;
     /*makes the page not have a horizontal scrolling*/
-    max-width: 100%;
+    /* max-width: 100%; */
     /*hides the scroll for horizontal*/
     overflow-x: hidden;
     background-color: rgb(255, 255, 255);
+    /*KEEP THE TWO LINES BELOW! THE KEEP FOOTER NICE 
+    FOR EVERY BROWSER*/
+    position: relative;
+    min-height: 100vh;
 }
 /*this is the table information with the font and width*/
  table {
@@ -48,7 +53,8 @@ a:hover {
 /*style of the image at the top*/
 img{
     display: block;
-    margin-left: auto;
+    margin: 50px;
+    margin-left: 700px;
     margin-right: auto;
 }
 
@@ -78,7 +84,12 @@ img{
     width: 100%;
     /*have the footer at the bottom and stretch across*/
     float: right, bottom;
-    position: relative;
+    /*DO NOT REMOVE THE LINE BELOW THIS; USED FOR FOOTER*/
+    position: absolute;
+    /*DO NOT REMOVE THE LINE BELOW THIS; USED FOR FOOTER*/
+    bottom: 0;
+    /*DO NOT REMOVE THE LINE BELOW THIS; USED FOR FOOTER*/
+    width: 100%;
     bottom: -100%;
     color: rgb(255, 255, 255);
     background-color: #024230;
@@ -88,7 +99,7 @@ img{
     float: right;
     top: -75px;
     text-align: right;
-    padding-right: 5%;
+    padding-right: 10px;
     margin: 0;
     color: white;
 }
