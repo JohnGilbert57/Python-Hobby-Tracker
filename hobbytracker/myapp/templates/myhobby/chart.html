@@ -11,10 +11,10 @@ Ohio University-->
         var myChart = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: ["Taylor", "Spencer", "Nathaniel", "Johnny", "Nathan", "Dr. Liu", "Krerkkiat"],
+            labels: [{% for item in qs %}'{{item.name}}'{% endfor %}],
             datasets: [{
                 label: 'Amount of Time (Minutes)',
-                data: [27, 75, 69, 42, 55, 14, 86],
+                data: [{% for item in qs %}{{item.timeLimit}}{% endfor %}],
                 backgroundColor: [
                     'rgba(0, 104, 72, 0.5)',
                     'rgba(170, 138, 0, 0.5)',

@@ -18,7 +18,7 @@ class Hobby(models.Model):
 
     # Called when displaying raw data
     def __str__(self):
-        return "{}-{}".format(self.name, self.time)
+        return "{}-{}".format(self.name, self.timeLimit)
 
 class HobbyTime(models.Model):
     # Establish a foreign key relationship with Hobby
