@@ -5,8 +5,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.conf import settings
-from .forms import UserLoginForm, NewUserForm
-from .models import HobbyUser
+from .forms import NewUserForm
 from django.shortcuts import redirect
 from django.views import generic
 from django.contrib.auth import *
@@ -14,18 +13,10 @@ from django.views.generic import TemplateView
 from .models import Hobby
 
 # Create your views here.
-def index(request):
+def task(request):
     #return HttpResponse("Hello World")
-    return render(request, './myhobby/index.html')
-def user_login_form(request):
-    form = UserLoginForm(request.POST or None)
-    if(form.is_valid()):
-        form.save()
-        return redirect(index)
-    context = {
-        'form': form
-    }
-    return render(request, './registration/login.html', context)
+    return render(request, './myhobby/task.html')
+
 def new_user_form(response):
     if response.method == "POST":
         form = NewUserForm(response.POST)
