@@ -4,7 +4,7 @@
 *.pot
 __pycache__/
 pycache
-db.sqlite3
+#db.sqlite3
 *json
 node_modules/*
 
