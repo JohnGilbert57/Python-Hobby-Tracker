@@ -73,6 +73,17 @@ a:hover {
     color: rgb(255, 255, 255);
 }
 
+#hobbies a:link, #hobbies a:visited{
+    color: rgb(0, 0, 0);
+    background-color: transparent;
+    text-decoration: none;
+}
+
+#hobbies a:hover {
+    color: rgb(154, 206, 96);
+}
+
+
 /*styles the footer of the website*/
 #footer{
     height: 225px; 
