@@ -43,3 +43,5 @@ class HobbyChartView(TemplateView):
         context = super().get_context_data(**kwargs)
         context["qs"] = Hobby.objects.all()
         return context
+def sprites(request):
+    return render(request, './myhobby/sprites.html')

@@ -1,0 +1,37 @@
+<!--Taylor Miller
+    tm408518@ohio.edu
+    temporary implementation for sprites on sprtes.html
+    -->
+{% load static %}
+<!DOCTYPE >
+<html>
+    <head>
+        <link rel = "stylesheet" type = "text/css" href="{% static 'myapp/css/sprites.css' %}">
+        <!--<script type="text/javascript" src="myapp/css/sprites.js"></script>-->
+
+        <script type="text/javascript">
+            var tID; //we will use this variable to clear the setInterval()
+            function animateScript() {
+            var    position = 184; //start position for the image slicer
+            const  interval = 100; //100 ms of interval for the setInterval()
+            tID = setInterval ( () => {
+            document.getElementById("image").style.backgroundPosition = 
+            `-${position}px 0px`; 
+            //we use the ES6 template literal to insert the variable "position"
+            if (position < 950)
+            { position = position + 180;}
+            //we increment the position by 256 each time
+            else
+            { position = 180; }
+            }
+            , interval ); //end of setInterval
+            } //end of animateScript()
+        </script>
+    </head>
+    <body>
+        <div id="demo">
+            <p id="image" onmouseover="animateScript()">  </p>
+        </div>
+    </body>
+    
+</html>
