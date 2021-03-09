@@ -3,6 +3,7 @@
 # the format for the user login; creates the objects basesd upon the models and sets the data
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.models import User
 
@@ -22,11 +23,25 @@ from django.contrib.auth.models import User
 class NewUserForm(UserCreationForm):
     class Meta:
         model = User
-        fields = ["username", "password1", "password2"]
+        fields = ["username", "password"]
         widgets = {
-            'password': forms.PasswordInput()
+            'username': forms.TextInput(attrs={"class": "form-control"}),
+            'password': forms.TextInput(attrs={"class": "form-control"}),
         }
         labels = {
-            'userName': 'Username',
-            'password': 'Password'
+            'username': 'Username',
+            'password': 'Password',
+        }
+
+class Login(AuthenticationForm):
+    class Meta:
+        model = User
+        fields = ["username", "password"]
+        widgets = {
+            'username': forms.TextInput(attrs={"class": "form-control"}),
+            'password': forms.TextInput(attrs={"class": "form-control"}),
+        }
+        labels = {
+            'username': 'Username',
+            'password': 'Password',
         }
