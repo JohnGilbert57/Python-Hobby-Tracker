@@ -7,18 +7,6 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.models import User
 
-# class HobbyList(forms.ModelForm):
-#     class Meta:
-#         model = Hobby
-#         fields = [
-#             'hobby',
-#             'goal'
-#         ]
-#         labels = {
-#             'hobby': 'Hobby',
-#             'goal': 'Goal'
-#         }
-
 class NewHobbyForm(forms.ModelForm):
     class Meta:
         model = Hobby
