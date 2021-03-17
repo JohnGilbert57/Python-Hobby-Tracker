@@ -1,0 +1,17 @@
+<!--This is edited by:
+Nathan Bennett
+Ohio University-->
+{% load static %}
+<!DOCTYPE >
+<html>
+    <!-- Needs Styling -->
+    <body>
+        <div id = "formComponents">  
+            <form action="" method="POST" id = "forms" class = "form-group">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type = 'submit' name = "Add" id = "Add" value = 'Add Time' />
+            </form>
+        </div>
+    </body>
+</html>

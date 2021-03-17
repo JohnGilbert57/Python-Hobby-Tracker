@@ -7,6 +7,9 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.models import User
 
+class HobbyTimeForm(forms.Form):
+    timeSpent = forms.IntegerField(label='Time Spent')
+
 class NewHobbyForm(forms.ModelForm):
     class Meta:
         model = Hobby

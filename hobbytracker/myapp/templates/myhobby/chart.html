@@ -3,6 +3,7 @@ Ohio University-->
 {% extends 'base.html' %}
 
 {% block title %}Hobby Chart{% endblock title %}
+
 {% block scripts %}
 
 <script>
@@ -60,5 +61,10 @@ Ohio University-->
 {% endblock scripts %}
 
 {% block content %}
+
     <canvas id="myChart" width="100" height="100"></canvas>
+    <form method="GET" action="addtime">
+        {% csrf_token %}
+        <button type='submit' name="hobby" value='{{hobby.id}}'>Add Time</button>
+    </form>
 {% endblock content %}

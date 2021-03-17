@@ -5,13 +5,14 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.conf import settings
-from .forms import NewUserForm, NewHobbyForm
+from .forms import NewUserForm, NewHobbyForm, HobbyTimeForm
 from django.shortcuts import redirect
 from django.views import generic
 from django.contrib.auth import *
 from django.views.generic import TemplateView
 from .models import Hobby,HobbyTime
 from django.contrib.auth.models import User
+import datetime
 
 # Create your views here.
 def task(request):
@@ -42,6 +43,24 @@ def new_hobby_form(response):
     else:
         form = NewHobbyForm()
     return render(response, './myhobby/new_hobby.html', {'form': form})
+
+def hobby_time_form(response):
+    if response.method == "POST":
+        form = HobbyTimeForm(response.POST)
+        if(form.is_valid()):
+            hobbyid = response.GET.get("hobby")
+            time_int = form.cleaned_data['timeSpent']
+            delta = datetime.timedelta(minutes=time_int)
+            end = datetime.datetime.now()
+            start = end - delta
+            obj = HobbyTime(startTime=start,endTime=end)
+            obj.hobbyUser = User.objects.get(pk=response.user.id)
+            obj.hobby = Hobby.objects.get(pk=hobbyid)
+            obj.save()
+            return redirect("/hobbyview?hobbyid=" + hobbyid)
+    else:
+        form = HobbyTimeForm()
+    return render(response, './myhobby/hobby_time.html', {'form': form})
 
 def hobbiespage(request):
     if request.user.is_anonymous:

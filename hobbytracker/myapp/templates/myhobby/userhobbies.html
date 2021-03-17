@@ -15,7 +15,7 @@
         <div id = hobbies>
         {% for hobby in userHobbies %}
 	    <!-- look into using POST here-->
-	    <a href="/test?hobbyid={{ hobby.id }}">
+	    <a href="/hobbyview?hobbyid={{ hobby.id }}">
 	        {{ hobby.name }}
 	    </a>
 	    <form method="POST">
