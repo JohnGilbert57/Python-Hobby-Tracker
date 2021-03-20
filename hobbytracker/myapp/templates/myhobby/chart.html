@@ -5,16 +5,17 @@ Ohio University-->
 {% block title %}Hobby Chart{% endblock title %}
 
 {% block scripts %}
+
 <script>
     $(document).ready(function(){
         var ctx = document.getElementById('myChart').getContext('2d');
         var myChart = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: [{% for item in qs %}'{{item.name}}'{% endfor %}],
+            labels: [{% for t in qs %} '{{ t }}', {% endfor %}],
             datasets: [{
-                label: 'Amount of Time (Minutes)',
-                data: [{% for item in qs %}{{item.timeLimit}}{% endfor %}],
+                label: '{{hobby.name}} Minutes',
+                data: [{% for t in vals %} '{{ t }}', {% endfor %}],
                 backgroundColor: [
                     'rgba(0, 104, 72, 0.5)',
                     'rgba(170, 138, 0, 0.5)',
@@ -60,5 +61,10 @@ Ohio University-->
 {% endblock scripts %}
 
 {% block content %}
+
     <canvas id="myChart" width="100" height="100"></canvas>
+    <form method="GET" action="addtime">
+        {% csrf_token %}
+        <button type='submit' name="hobby" value='{{hobby.id}}'>Add Time</button>
+    </form>
 {% endblock content %}

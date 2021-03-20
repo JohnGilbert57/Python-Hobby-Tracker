@@ -12,7 +12,19 @@
             <p>{{user.username}}</p>
             <a href = "{% url 'logout' %}">Logout</a>
         </div>
-        <form method = "POST" action = "create">
+        <div id = hobbies>
+        {% for hobby in userHobbies %}
+	    <!-- look into using POST here-->
+	    <a href="/hobbyview?hobbyid={{ hobby.id }}">
+	        {{ hobby.name }}
+	    </a>
+	    <form method="POST">
+	        {% csrf_token %}
+	        <button type='submit' name="delete" value='{{hobby.id}}'>Delete</button>
+	    </form>
+        {% endfor %}
+        </div> 
+        <form method = "GET" action = "create">
             {% csrf_token %}
             {{ form.as_p }}
             <input type = 'submit' name = "Create" id = "Create" value = 'Create' />
