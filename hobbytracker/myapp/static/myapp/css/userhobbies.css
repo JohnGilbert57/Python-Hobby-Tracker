@@ -10,7 +10,9 @@ body{
     /*KEEP THE TWO LINES BELOW! THE KEEP FOOTER NICE 
     FOR EVERY BROWSER*/
     position: relative;
-    min-height: 100vh;
+    height: 100%;
+    overflow-x: hidden;
+    
 }
 table {
     font-family: georgia, serif;
@@ -88,15 +90,132 @@ a:hover {
 #footer{
     height: 225px; 
     width: 100%;
+    margin-top: 1.5%;
     /*have the footer at the bottom and stretch across*/
-    float: right, bottom;
+
     /*DO NOT REMOVE THE LINE BELOW THIS; USED FOR FOOTER*/
-    position: absolute;
+    position: relative;
     /*DO NOT REMOVE THE LINE BELOW THIS; USED FOR FOOTER*/
-    bottom: 0;
+;
     /*DO NOT REMOVE THE LINE BELOW THIS; USED FOR FOOTER*/
     width: 100%;
-    bottom: -100%;
+    bottom: 0%;
     color: rgb(255, 255, 255);
     background-color: #024230;
+    
+}
+#hobbyinfo{
+    width: 70%;
+    background-color: #00694E;
+    margin: 0 auto;
+    height: 5%;
+    padding: 1.25%;
+    margin-bottom: 1.5%;
+    border: 2px solid black;
+    box-shadow:  -1px 1px #414141,
+    -2px 2px #414141,
+    -3px 3px #414141,
+    -4px 4px #414141,
+    -5px 5px #414141;
+    
+}
+#hobbyinfo p{
+    color: white;
+    margin: 0;
+    font-size: 14px;
+    
+}
+#hobbyinfo img{
+    height: 80%
+}
+#hobbyinfo button{
+    float: right;
+    transform:translateY(-84%);
+    height: 150%;
+    background-color: red;
+}
+#addhobby{  
+    display: block;
+    margin-left: 40.25%;
+    margin-right: auto;
+    width: 100%;
+    
+}
+#Create{
+    width: 20%;
+    height: 5%;
+    background-color: #00694E;
+    margin-top: 1%;
+    box-shadow:  -1px 1px #414141,
+    -2px 2px #414141;
+
+}
+#addhobby img{
+    height: 80%;
+    float: left;
+    padding-top: 0.25%;
+    color: white;
+}
+#addhobby p{
+    display: inline;
+    margin-top: 25%;
+    font-size: 150%;
+    color: white;
+}
+#container{
+    min-height:70%;
+}
+.modal{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: 200ms ease-in-out;
+    border: 1px solid black;
+    border-radius: 10px;
+    z-index: 10;
+    background-color: white;
+    width: 400px;
+    max-width: 80%;
+}
+.modal.active{
+    transform: translate(-50%, -50%) scale(1);
+}
+.modal-header{
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid black
+}
+.modal-header .title{
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+.modal-header .close-button{
+    cursor: pointer;
+    border:none;
+    outline: none;
+    background-color: white;
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+.modal-body{
+    padding: 10px 15px;
+}
+#overlay{
+    position: fixed;
+    opacity: 0;
+    transition: 200ms ease-in-out;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0, .5);
+    pointer-events: none;
+
+}
+#overlay.active{
+    opacity: 1;
+    pointer-events: all;
 }
