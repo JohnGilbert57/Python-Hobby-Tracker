@@ -3,6 +3,7 @@ Johnny Gilbert
 Nathaniel Buchanan
 Ohio University-->
 {% extends 'base.html' %}
+{% load crispy_forms_tags%}
 {% block content %}
 {% load static %}
 <!DOCTYPE >
@@ -17,7 +18,7 @@ Ohio University-->
             </img>
             <form action="" method="POST" id = "forms" class = "form-group">
                 {% csrf_token %}
-                {{ form.as_p }}
+                {{ form|crispy }}
                 <input type = 'submit' name = "Create" id = "Create" value = 'Create Account' />
             </form>
         </div>

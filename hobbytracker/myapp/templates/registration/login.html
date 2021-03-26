@@ -3,6 +3,7 @@ Johnny Gilbert
 Nathaniel Buchanan
 Ohio University-->
 {% extends 'base.html' %}
+{% load crispy_forms_tags%}
 {% block content %}
 {% load static %}
 <!DOCTYPE >
@@ -18,7 +19,7 @@ Ohio University-->
             <form action="" method="POST" id = "forms" class = "form-group">
                 <!--For now, this just submits the form, creates the user, and redirects to index-->
                 {% csrf_token %}
-                {{ form.as_p }}
+                {{ form|crispy }}
                 <input type = 'submit' name = "Log" id = "Log" value = 'Login' />
                 <br>
                 <br>

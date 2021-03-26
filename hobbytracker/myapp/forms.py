@@ -23,25 +23,10 @@ from django.contrib.auth.models import User
 class NewUserForm(UserCreationForm):
     class Meta:
         model = User
-        fields = ["username", "password"]
+        fields = ["username"]
         widgets = {
             'username': forms.TextInput(attrs={"class": "form-control"}),
-            'password': forms.TextInput(attrs={"class": "form-control"}),
         }
         labels = {
             'username': 'Username',
-            'password': 'Password',
-        }
-
-class Login(AuthenticationForm):
-    class Meta:
-        model = User
-        fields = ["username", "password"]
-        widgets = {
-            'username': forms.TextInput(attrs={"class": "form-control"}),
-            'password': forms.TextInput(attrs={"class": "form-control"}),
-        }
-        labels = {
-            'username': 'Username',
-            'password': 'Password',
         }
