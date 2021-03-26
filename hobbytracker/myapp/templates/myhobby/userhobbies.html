@@ -33,17 +33,24 @@
         
         {% endfor %}
         </div>
-        
+
         <div class = "modal" id = "modal">
             <div class = "modal-header">
-                <p class = "title"> add hobby </p>
-                <button data-close-button class = "data-close-button">&times</button>
+                <p class = "title"> Add Hobby </p>
+                <button data-close-button class = "close-button">&times</button>
             </div>
             <div class = "modal-body">
-                <p>fdjasifnnwaeiufnearivnaeri</p>
+                <form action="" method="POST" id = "forms" class = "form-group">
+                    <div class = "form-components">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                    </div>
+                    <div id = "bottom-line"></div>
+                    <input id = "newHobby" type = 'submit' name = "Create" id = "Create" value = 'Submit' />
+                </form>
             </div>
         </div>
-        <div id = "overlay"></div>
+        
         <div id = footer>
             <!--This is all of the table information, th is bolded, tr is not-->
                 <table>
@@ -81,5 +88,6 @@
                 <!--Ohio University website-->
                 <p><a href=https://www.ohio.edu>&nbsp&nbspOhio University<a></p>
             </div>
+            <div id = "overlay"></div>
     </body>
 </html>  
