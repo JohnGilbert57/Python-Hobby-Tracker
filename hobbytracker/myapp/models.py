@@ -38,4 +38,10 @@ class HobbyTime(models.Model):
     startTime = models.DateTimeField()
     endTime = models.DateTimeField()
 
+class Sprite(models.Model):
+    # Data fields
+    spriteName = models.CharField(max_length=200)
+    imageName = models.CharField(max_length=100)
+    # Add or remove fields as needed
+
 
