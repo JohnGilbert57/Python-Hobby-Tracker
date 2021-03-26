@@ -17,8 +17,8 @@ class NewHobbyForm(forms.ModelForm):
         ]
         labels = {
             'name': 'Hobby Name',
-            'spriteId': 'Sprite',
-            'timeLimit': 'Time Limit'
+            'spriteId': 'Sprite Figure',
+            'timeLimit': 'Goal'
         }
 
 class NewUserForm(UserCreationForm):
