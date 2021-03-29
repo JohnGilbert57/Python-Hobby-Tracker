@@ -1,10 +1,12 @@
 <!--Nathaniel Buchanan
-Ohio University-->
+    Nathan Bennett
+    Ohio University-->
 {% extends 'base.html' %}
 
-{% block title %}Hobby Chart{% endblock title %}
+{% block title %}Hobby Tracker "{{hobby.name}}"{% endblock title %}
 
 {% block scripts %}
+{% load static %}
 
 <script>
     $(document).ready(function(){
@@ -14,7 +16,7 @@ Ohio University-->
         data: {
             labels: [{% for t in qs %} '{{ t }}', {% endfor %}],
             datasets: [{
-                label: '{{hobby.name}} Minutes',
+                label: '{{hobby.name}} (Minutes)',
                 data: [{% for t in vals %} '{{ t }}', {% endfor %}],
                 backgroundColor: [
                     'rgba(0, 104, 72, 0.5)',
@@ -44,8 +46,8 @@ Ohio University-->
             }]
         },
         options: {
-            //Used to make charts fit on entire page
-            responsive: true,
+            //Used to make charts fit on entire page (set to true if so)
+            responsive: false,
             maintainAspectRatio: false,
             scales: {
                 yAxes: [{
@@ -57,14 +59,15 @@ Ohio University-->
         }
     });
 });
+
 </script>
 {% endblock scripts %}
 
 {% block content %}
-
-    <canvas id="myChart" width="100" height="100"></canvas>
-    <form method="GET" action="addtime">
-        {% csrf_token %}
-        <button type='submit' name="hobby" value='{{hobby.id}}'>Add Time</button>
-    </form>
+    <canvas id="myChart" width="1000" height="900"></canvas>
+        <form method="GET" action="addtime">
+            {% csrf_token %}
+            <button type='submit' name="hobby" value='{{hobby.id}}'>Add Time</button>
+        </form>
 {% endblock content %}
+
