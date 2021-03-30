@@ -10,22 +10,35 @@
         <!--<script type="text/javascript" src="myapp/css/sprites.js"></script>-->
 
         <script type="text/javascript">
-            var tID; //we will use this variable to clear the setInterval()
-            function animateScript() {
-            var    position = 184; //start position for the image slicer
-            const  interval = 100; //100 ms of interval for the setInterval()
-            tID = setInterval ( () => {
-            document.getElementById("image").style.backgroundPosition = 
-            `-${position}px 0px`; 
-            //we use the ES6 template literal to insert the variable "position"
-            if (position < 950)
-            { position = position + 180;}
-            //we increment the position by 256 each time
-            else
-            { position = 180; }
+            var sprite_selection = 0; //will be used to select which sprite we use, updated from the drop-down selection
+            var sprite_happiness = 0;
+            if(sprite_selection == 0){//rufus
+                if(sprite_happiness < 15){
+                    //input sad rufus img here
+                    
+                }else if(sprite_happiness < 30){
+                    //input meh rufus
+                }else{
+                    //input happy rufus
+                }
+            }else if(sprite_selection == 1){//baby yoda
+                if(sprite_happiness < 15){
+                    //input sad yoda img here
+                }else if(sprite_happiness < 30){
+                    //input meh yoda
+                }else{
+                    //input happy yoda
+                }
+            }else if(sprite_selection == 2){//pokemon thing
+                if(sprite_happiness < 15){
+                    //input sad  pokemon img here
+                }else if(sprite_happiness < 30){
+                    //input meh pokemon
+                }else{
+                    //input happy pokemon
+                }
             }
-            , interval ); //end of setInterval
-            } //end of animateScript()
+
         </script>
     </head>
     <body>
