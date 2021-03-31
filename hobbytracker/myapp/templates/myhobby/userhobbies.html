@@ -20,7 +20,7 @@
             {% for hobby in userHobbies %}
             <div id = hobbyinfo>
                 <!-- look into using POST here-->
-                <a href="/test?hobbyid={{ hobby.id }}">
+                <a href="/hobbyview?hobbyid={{ hobby.id }}">
                     <p style = "padding-bottom: 0.5%;">Hobby: {{ hobby.name }}</p>
                     <p>Weekly Goal:{{ hobby.timeLimit}}</p>
                 </a>
