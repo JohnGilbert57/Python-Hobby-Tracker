@@ -15,4 +15,5 @@ urlpatterns = [
     path('hobbyview/', views.HobbyChartView.as_view(), name='home'),
     path('userhobbies/create', views.new_hobby_form, name = 'create'),
     path('hobbyview/addtime', views.hobby_time_form, name = 'addtime'),
+    path('test/', views.HobbyChartView.as_view(), name='home'),
 ] 

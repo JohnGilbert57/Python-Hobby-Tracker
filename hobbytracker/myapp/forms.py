@@ -4,6 +4,7 @@
 from django import forms
 from .models import Hobby
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.models import User
 
@@ -20,18 +21,17 @@ class NewHobbyForm(forms.ModelForm):
         ]
         labels = {
             'name': 'Hobby Name',
-            'spriteId': 'Sprite',
-            'timeLimit': 'Time Limit'
+            'spriteId': 'Sprite Figure',
+            'timeLimit': 'Goal'
         }
 
 class NewUserForm(UserCreationForm):
     class Meta:
         model = User
-        fields = ["username", "password1", "password2"]
+        fields = ["username"]
         widgets = {
-            'password': forms.PasswordInput()
+            'username': forms.TextInput(attrs={"class": "form-control"}),
         }
         labels = {
-            'userName': 'Username',
-            'password': 'Password'
+            'username': 'Username',
         }

@@ -38,4 +38,3 @@ class HobbyTime(models.Model):
     startTime = models.DateTimeField()
     endTime = models.DateTimeField()
 
-
