@@ -8,7 +8,7 @@ The owner of the video said to feel free to use this code for your own projects.
 This also enables the user to NOT have to download chart.js . It all will call the links 
 instead. Very cool! It also includes the title and such for the webpage.
 -->
-
+{% load static %}
 <!doctype html>
 <html lang="en">
    <head>
@@ -22,6 +22,9 @@ instead. Very cool! It also includes the title and such for the webpage.
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css" integrity="sha256-aa0xaJgmK/X74WM224KMQeNQC2xYKwlAt08oZqjeF0E=" crossorigin="anonymous" />
         <!-- jQuery -->
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+        <!-- New line-->
+        <link rel = "stylesheet" type = "text/css" href="{% static 'myapp/css/chart.css' %}">
         <title>
             {% block title %}{% endblock title %} 
         </title>
