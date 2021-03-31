@@ -3,7 +3,8 @@
     temporary styling for sprites page
 */
 #image1{
-    height: 200px;
-    width: 184px;
+    height: 256px;
+    width: 256px;
     background: url('https://gamingshift.com/wp-content/uploads/2019/12/mega-man-sprite-sheet.jpg') 0px 0px;
+    /*want to make url a tag to directory*/
 }
