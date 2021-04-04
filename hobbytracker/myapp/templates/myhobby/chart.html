@@ -64,8 +64,14 @@
 {% endblock scripts %}
 
 {% block content %}
+    
     <div id = header>
         <p>Python Hobby Tracker</p>  
+    </div>
+    <div id = credentials>
+        <p>{{user.username}}</p>
+        <a href = "{% url 'logout' %}">Logout</a> <br>
+        <a href = "../userhobbies"> Home </a>
     </div>
     <div class = "chartContent">
         <canvas id="myChart" width="900" height="600"></canvas>

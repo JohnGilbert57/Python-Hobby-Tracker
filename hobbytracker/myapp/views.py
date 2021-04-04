@@ -64,7 +64,6 @@ def hobbiespage(response):
         return redirect('/login')
 
     if response.method == "POST" and 'delete' in response.POST:
-        print(response.POST.get('delete'))
         delete_key = response.POST.get('delete')
         if Hobby.objects.filter(pk=delete_key).count() > 0:
             target = Hobby.objects.get(pk=delete_key)

@@ -12,7 +12,6 @@ button{
     width: 50%;
     text-align: center;
 }
-
 body{
     margin: 0;
     padding: 0;
@@ -40,12 +39,16 @@ td{
 #credentials{
     position: relative;
     float: right;
-    top: -75px;
+    top: -70px;
     text-align: right;
-
     padding-right: 10px;
+    padding-bottom: 0px;
     margin: 0;
     color: white;
+}
+#credentials p{
+    padding: 0px;
+    margin: 0px;
 }
 
 /*used for the headings of the table to be bold and different color*/

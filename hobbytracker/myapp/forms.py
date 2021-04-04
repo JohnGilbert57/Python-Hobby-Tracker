@@ -2,7 +2,7 @@
 # Ohio University
 # the format for the user login; creates the objects basesd upon the models and sets the data
 from django import forms
-from .models import Hobby
+from .models import Hobby, HobbyTime
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, authenticate
@@ -22,7 +22,7 @@ class NewHobbyForm(forms.ModelForm):
         labels = {
             'name': 'Hobby Name',
             'spriteId': 'Sprite Figure',
-            'timeLimit': 'Goal'
+            'timeLimit': 'Goal (0.0-168.0 Hours)'
         }
 
 class NewUserForm(UserCreationForm):
@@ -35,3 +35,5 @@ class NewUserForm(UserCreationForm):
         labels = {
             'username': 'Username',
         }
+# class TimeForm(models.ModelForm):
+
