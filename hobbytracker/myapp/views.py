@@ -117,13 +117,14 @@ class HobbyChartView(TemplateView):
         # Find the target time total that the user should have for their hobby
         # The 4 is a temp variable that represents the # of days in week so far (e.g. Wednesday here)
         targetTimeTotal = hobby.timeLimit * 4
-
+        print(targetTimeTotal)
+        print(totalMinutes)
         # Calculate the difference from what the users wants and what they have
         # differenceInTime = 0
         # differenceInTime = targetTimeTotal - totalMinutes
 
         percentDifference = (float(targetTimeTotal - totalMinutes)) / float(targetTimeTotal) * 100.0
-
+        print(percentDifference)
         # Consider days in period, number in days in period * controlLimit (percentages)
         # Compare to a percentage value
 
@@ -131,7 +132,7 @@ class HobbyChartView(TemplateView):
         basepath = hobby.spriteId.imageName
         
         # Choose pet met
-        if(percentDifference >= 75.0):
+        if(percentDifference < 45.0):
             # append happy to basepath
             # print("Happy")
             basepath = basepath + ("_happy.gif")
@@ -139,7 +140,7 @@ class HobbyChartView(TemplateView):
             # append content to basepath
             # print("Content")
             basepath = basepath + ("_content.gif")
-        elif (percentDifference < 45.0):
+        elif (percentDifference > 75.0 and percentDifference < 100):
            # print("Sad")
             basepath = basepath + ("_sad.gif")
             # append the sad

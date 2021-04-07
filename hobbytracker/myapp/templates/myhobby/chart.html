@@ -63,7 +63,8 @@ Ohio University-->
 {% block content %}
 
     <canvas id="myChart" width="100" height="100"></canvas>
-    <img src= "{{fullName}}">
+    <!--Below is access to the sprite-->
+    <img src= "../../static/myapp/img/sprites/{{fullName}}">
     <form method="GET" action="addtime">
         {% csrf_token %}
         <button type='submit' name="hobby" value='{{hobby.id}}'>Add Time</button>
