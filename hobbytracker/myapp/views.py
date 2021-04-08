@@ -146,7 +146,7 @@ class HobbyChartView(TemplateView):
         basepath = hobby.spriteId.imageName
         
         # Choose pet met
-        if(percentDifference >= 75.0):
+        if(percentDifference < 45.0):
             # append happy to basepath
             # print("Happy")
             basepath = basepath + ("_happy.gif")
@@ -154,7 +154,7 @@ class HobbyChartView(TemplateView):
             # append content to basepath
             # print("Content")
             basepath = basepath + ("_content.gif")
-        elif (percentDifference < 45.0):
+        elif (percentDifference >= 75.0 and percentDifference < 100):
            # print("Sad")
             basepath = basepath + ("_sad.gif")
             # append the sad
