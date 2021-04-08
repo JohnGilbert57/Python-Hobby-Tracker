@@ -33,18 +33,6 @@ def new_user_form(response):
     }
     return render(response, './myhobby/new_user.html', context)
 
-def new_hobby_form(response):
-    if response.method == "POST":
-        form = NewHobbyForm(response.POST)
-        if(form.is_valid()):
-            obj = form.save(commit=False)
-            obj.hobbyUser = User.objects.get(pk=response.user.id)
-            obj.save()
-            return redirect("/userhobbies")
-    else:
-        form = NewHobbyForm()
-    return render(response, './myhobby/new_hobby.html', {'form': form})
-
 def hobby_time_form(response):
     if response.method == "POST":
         form = HobbyTimeForm(response.POST)
@@ -80,23 +68,33 @@ def hobby_time_form(response):
         form = HobbyTimeForm()
     return render(response, './myhobby/hobby_time.html', {'form': form})
 
-def hobbiespage(request):
-    if request.user.is_anonymous:
+def hobbiespage(response):
+    if response.method == "POST":
+        form = NewHobbyForm(response.POST)
+        if(form.is_valid()):
+            obj = form.save(commit=False)
+            obj.hobbyUser = User.objects.get(pk=response.user.id)
+            obj.save()
+            return redirect("/userhobbies")
+    else:
+        form = NewHobbyForm()
+    if response.user.is_anonymous:
         return redirect('/login')
 
-    if request.method == "POST" and 'delete' in request.POST:
-        print(request.POST.get('delete'))
-        delete_key = request.POST.get('delete')
+    if response.method == "POST" and 'delete' in response.POST:
+        delete_key = response.POST.get('delete')
         if Hobby.objects.filter(pk=delete_key).count() > 0:
             target = Hobby.objects.get(pk=delete_key)
             target.delete()
 
     # Get all hobbies for current user
-    userHobbies = Hobby.objects.filter(hobbyUser=request.user)
+    userHobbies = Hobby.objects.filter(hobbyUser=response.user)
     context = {
         'userHobbies': list(userHobbies),
+        'form': form
+        
     }
-    return render(request, './myhobby/userhobbies.html', context)
+    return render(response, './myhobby/userhobbies.html', context)
 
 def baseUrl(response):
     return redirect('/login')

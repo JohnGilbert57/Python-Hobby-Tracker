@@ -3,6 +3,7 @@
 <html>
     <head>
         <link rel = "stylesheet" type = "text/css" href="{% static 'myapp/css/userhobbies.css' %}">
+        <script type = "text/javascript" defer src = "{% static 'myapp/js/newhobby.js' %}"></script>
     </head>
     <body>
         <div id = header>
@@ -12,23 +13,44 @@
             <p>{{user.username}}</p>
             <a href = "{% url 'logout' %}">Logout</a>
         </div>
-        <div id = hobbies>
-        {% for hobby in userHobbies %}
-	    <!-- look into using POST here-->
-	    <a href="/hobbyview?hobbyid={{ hobby.id }}">
-	        {{ hobby.name }}
-	    </a>
-	    <form method="POST">
-	        {% csrf_token %}
-	        <button type='submit' name="delete" value='{{hobby.id}}'>Delete</button>
-	    </form>
+        <div id = container>
+            <div id = addhobby>
+                <button data-modal-target = "#modal" type = 'submit' id = "Create"><img src = "{% static 'myapp/img/add.png' %}"/><p>Add Hobby</p></button>
+            </div>
+            {% for hobby in userHobbies %}
+            <div id = hobbyinfo>
+                <!-- look into using POST here-->
+                <a href="/hobbyview?hobbyid={{ hobby.id }}">
+                    <p style = "padding-bottom: 0.5%;">Hobby: {{ hobby.name }}</p>
+                    <p>Weekly Goal: {{ hobby.timeLimit}} hours</p>
+                </a>
+                <form method="POST">
+                    {% csrf_token %}
+                    <button type='submit' name="delete" value='{{hobby.id}}'><img src ="{% static 'myapp/img/Vector.png' %}" alt = "Trash Can"/></button>
+                </form>
+
+            </div>
+        
         {% endfor %}
-        </div> 
-        <form method = "GET" action = "create">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <input type = 'submit' name = "Create" id = "Create" value = 'Create' />
-        </form>
+        </div>
+
+        <div class = "modal" id = "modal">
+            <div class = "modal-header">
+                <p class = "title"> Add Hobby </p>
+                <button data-close-button class = "close-button">&times</button>
+            </div>
+            <div class = "modal-body">
+                <form action="" method="POST" id = "forms" class = "form-group">
+                    <div class = "form-components">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                    </div>
+                    <div id = "bottom-line"></div>
+                    <input submit-button id = "newHobby" type = "button" name = "Create" id = "Create" value = 'Submit' />
+                </form>
+            </div>
+        </div>
+        
         <div id = footer>
             <!--This is all of the table information, th is bolded, tr is not-->
                 <table>
@@ -66,5 +88,6 @@
                 <!--Ohio University website-->
                 <p><a href=https://www.ohio.edu>&nbsp&nbspOhio University<a></p>
             </div>
+            <div id = "overlay"></div>
     </body>
 </html>  
