@@ -34,6 +34,8 @@ def new_user_form(response):
     return render(response, './myhobby/new_user.html', context)
 
 def hobby_time_form(response):
+    if response.user.is_anonymous:
+        return redirect('/login')
     if response.method == "POST":
         form = HobbyTimeForm(response.POST)
         if(form.is_valid()):
@@ -69,6 +71,7 @@ def hobby_time_form(response):
     return render(response, './myhobby/hobby_time.html', {'form': form})
 
 def hobbiespage(response):
+
     if response.method == "POST":
         form = NewHobbyForm(response.POST)
         if(form.is_valid()):
@@ -101,9 +104,11 @@ def baseUrl(response):
 
 # Class used for Chart/Sprite
 class HobbyChartView(TemplateView):
+    
     template_name = './myhobby/chart.html'
     # Used for the chart information and sprite information
     def get_context_data(self, **kwargs):
+
         # Use the below for the context information for database
         context = super().get_context_data(**kwargs)
         hobbyid = self.request.GET.get('hobbyid')

@@ -21,7 +21,7 @@ body{
     position: relative;
     height: 100%;
     overflow-y: scroll;
-       
+    max-height: 100%;
 }
 #footerTable {
     font-family: georgia, serif;
@@ -124,7 +124,7 @@ a:link, a:visited{
     color: rgb(255, 255, 255);
     background-color: #024230;
     height: 30%;
- 
+    margin-bottom: 0%;
 }
 
 .chartContent{
@@ -137,4 +137,9 @@ a:link, a:visited{
     font-family: georgia, sans-serif;
     padding-top: 1.5%;
     padding-left: 0.25%;
+}
+.chartContent #sprite{
+    transform:scale(3) translateY(-175%);
+    float: right;
+    padding-right: 8%;
 }

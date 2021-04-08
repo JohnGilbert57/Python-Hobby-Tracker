@@ -79,7 +79,7 @@
     <div class = "chartContent">
         <canvas id="myChart" width="900" height="600"></canvas>
         <!--Below is access to the sprite-->
-        <img src= "../../static/myapp/img/sprites/{{fullName}}">
+        <img id = "sprite" src= "../../static/myapp/img/sprites/{{fullName}}">
         <form method="GET" action="addtime">
             {% csrf_token %}
             <div id="addTime">
