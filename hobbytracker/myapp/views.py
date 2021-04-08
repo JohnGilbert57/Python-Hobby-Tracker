@@ -93,38 +93,33 @@ class HobbyChartView(TemplateView):
         hobbyid = self.request.GET.get('hobbyid')
         hobby = Hobby.objects.get(pk=hobbyid)
         
-        # Days_back is a temp that goes 4 days back
-        days_back = 4
-
-        # Gets an array of Times that will go back x number of days
-        times = list(HobbyTime.objects.raw('SELECT * FROM myapp_hobbytime WHERE hobby_id=' + str(hobbyid) + ' AND startTime>=date(\'now\',\'-'+str(days_back)+' day\')'))
+        # Days_back is the number of days prior to today that will be included on graph
+        days_back = int(datetime.datetime.today().strftime('%w'))
+        
+        # Gets an array of times that will go back x number of days
+        # (I could not get a format string to work properly)
+        times_raw = HobbyTime.objects.raw('SELECT id,SUM((julianday(endTime) - julianday(startTime)) * 24 * 60) totalmins,date(endTime) hobbydate FROM myapp_hobbytime WHERE hobby_id='+ str(hobby.id) +' AND startTime>=date(\'now\',\'-'+ str(days_back) +' day\') GROUP BY date(startTime)')
+	
+        times = []
+        # Create the float values for the chart
+        for t in times_raw:
+            times.append(round(t.totalmins,2))
 
         labels = []
         # Create the labels for the chart (temp for now)
-        for t in times:
-            labels.append(t.startTime.date())
-
-        vals = []
-        # Converting times to total minutes of the day
-        for t in times:
-            vals.append((t.endTime - t.startTime).total_seconds() / 60.0)
+        for t in times_raw:
+            labels.append(t.hobbydate)
 
         # This will get the total amount of mintutes the user has done
         totalMinutes = 0
-        for i in vals:
+        for i in times:
             totalMinutes = totalMinutes + i
 
         # Find the target time total that the user should have for their hobby
-        # The 4 is a temp variable that represents the # of days in week so far (e.g. Wednesday here)
-        targetTimeTotal = hobby.timeLimit * 4
-        print(targetTimeTotal)
-        print(totalMinutes)
-        # Calculate the difference from what the users wants and what they have
-        # differenceInTime = 0
-        # differenceInTime = targetTimeTotal - totalMinutes
+        targetTimeTotal = hobby.timeLimit * (days_back + 1)
 
         percentDifference = (float(targetTimeTotal - totalMinutes)) / float(targetTimeTotal) * 100.0
-        print(percentDifference)
+
         # Consider days in period, number in days in period * controlLimit (percentages)
         # Compare to a percentage value
 
@@ -132,7 +127,7 @@ class HobbyChartView(TemplateView):
         basepath = hobby.spriteId.imageName
         
         # Choose pet met
-        if(percentDifference < 45.0):
+        if(percentDifference >= 75.0):
             # append happy to basepath
             # print("Happy")
             basepath = basepath + ("_happy.gif")
@@ -140,7 +135,7 @@ class HobbyChartView(TemplateView):
             # append content to basepath
             # print("Content")
             basepath = basepath + ("_content.gif")
-        elif (percentDifference > 75.0 and percentDifference < 100):
+        elif (percentDifference < 45.0):
            # print("Sad")
             basepath = basepath + ("_sad.gif")
             # append the sad
@@ -152,5 +147,5 @@ class HobbyChartView(TemplateView):
         context["fullName"] = basepath
         context["hobby"] = hobby
         context["qs"] = labels
-        context["vals"] = vals
+        context["vals"] = times
         return context
