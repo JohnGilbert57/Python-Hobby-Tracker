@@ -13,6 +13,7 @@ from django.views.generic import TemplateView
 from .models import Hobby,HobbyTime
 from django.contrib.auth.models import User
 import datetime
+from django.utils import timezone
 
 # Create your views here.
 def task(request):
@@ -49,14 +50,31 @@ def hobby_time_form(response):
         form = HobbyTimeForm(response.POST)
         if(form.is_valid()):
             hobbyid = response.GET.get("hobby")
-            time_int = form.cleaned_data['timeSpent']
-            delta = datetime.timedelta(minutes=time_int)
-            end = datetime.datetime.now()
-            start = end - delta
-            obj = HobbyTime(startTime=start,endTime=end)
-            obj.hobbyUser = User.objects.get(pk=response.user.id)
-            obj.hobby = Hobby.objects.get(pk=hobbyid)
-            obj.save()
+            times = []
+            times.append(form.cleaned_data['sunTime'])
+            times.append(form.cleaned_data['monTime'])
+            times.append(form.cleaned_data['tueTime'])
+            times.append(form.cleaned_data['wedTime'])
+            times.append(form.cleaned_data['thuTime'])
+            times.append(form.cleaned_data['friTime'])
+            times.append(form.cleaned_data['satTime'])
+
+            weekday = int(datetime.datetime.today().strftime('%w'))
+            deltas = []
+            for t in times:
+                deltas.append(datetime.timedelta(minutes=t))
+
+            i = 0
+            now = timezone.now()
+            for d in deltas:
+                day_offset = datetime.timedelta(days=(i - weekday))
+                end = now + day_offset
+                start = end - d
+                obj = HobbyTime(startTime=start,endTime=end)
+                obj.hobbyUser = User.objects.get(pk=response.user.id)
+                obj.hobby = Hobby.objects.get(pk=hobbyid)
+                obj.save()
+                i += 1
             return redirect("/hobbyview?hobbyid=" + hobbyid)
     else:
         form = HobbyTimeForm()
@@ -95,10 +113,11 @@ class HobbyChartView(TemplateView):
         
         # Days_back is the number of days prior to today that will be included on graph
         days_back = int(datetime.datetime.today().strftime('%w'))
+        print(days_back)
         
         # Gets an array of times that will go back x number of days
         # (I could not get a format string to work properly)
-        times_raw = HobbyTime.objects.raw('SELECT id,SUM((julianday(endTime) - julianday(startTime)) * 24 * 60) totalmins,date(endTime) hobbydate FROM myapp_hobbytime WHERE hobby_id='+ str(hobby.id) +' AND startTime>=date(\'now\',\'-'+ str(days_back) +' day\') GROUP BY date(startTime)')
+        times_raw = HobbyTime.objects.raw('SELECT id,SUM((julianday(endTime) - julianday(startTime)) * 24 * 60) totalmins,date(endTime) hobbydate FROM myapp_hobbytime WHERE hobby_id='+ str(hobby.id) +' AND startTime>=date(\'now\',\'-'+ str(days_back) +' day\') AND endTime<=date(\'now\',\''+ str(7 - days_back) +' day\') GROUP BY date(startTime)')
 	
         times = []
         # Create the float values for the chart
@@ -106,7 +125,7 @@ class HobbyChartView(TemplateView):
             times.append(round(t.totalmins,2))
 
         labels = []
-        # Create the labels for the chart (temp for now)
+        # Create the labels for the chart
         for t in times_raw:
             labels.append(t.hobbydate)
 

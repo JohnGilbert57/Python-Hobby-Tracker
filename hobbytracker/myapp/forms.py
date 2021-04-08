@@ -8,7 +8,13 @@ from django.contrib.auth import login, authenticate
 from django.contrib.auth.models import User
 
 class HobbyTimeForm(forms.Form):
-    timeSpent = forms.IntegerField(label='Time Spent')
+    sunTime = forms.FloatField(label='Sunday',initial=0)
+    monTime = forms.FloatField(label='Monday',initial=0)
+    tueTime = forms.FloatField(label='Tuesday',initial=0)
+    wedTime = forms.FloatField(label='Wednesday',initial=0)
+    thuTime = forms.FloatField(label='Thursday',initial=0)
+    friTime = forms.FloatField(label='Friday',initial=0)
+    satTime = forms.FloatField(label='Saturday',initial=0)
 
 class NewHobbyForm(forms.ModelForm):
     class Meta:
