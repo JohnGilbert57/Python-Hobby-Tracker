@@ -44,13 +44,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'myapp.apps.MyappConfig',
     'crispy_forms',
-    'django_popup_view_field',
-    'widget_tweaks',
 
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
-DJANGO_POPUP_VIEW_FIELD_TEMPLATE_PACK = 'bootstrap4'
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

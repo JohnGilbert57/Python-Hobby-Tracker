@@ -7,7 +7,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.models import User
-from django_popup_view_field.fields import PopupViewField
+
 
 class HobbyTimeForm(forms.Form):
     sunTime = forms.FloatField(label='Sunday',initial=0)

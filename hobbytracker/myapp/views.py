@@ -34,8 +34,6 @@ def new_user_form(response):
     return render(response, './myhobby/new_user.html', context)
 
 def hobby_time_form(response):
-    if response.user.is_anonymous:
-        return redirect('/login')
     if response.method == "POST":
         form = HobbyTimeForm(response.POST)
         if(form.is_valid()):
@@ -103,8 +101,9 @@ def baseUrl(response):
     return redirect('/login')
 
 # Class used for Chart/Sprite
+
+
 class HobbyChartView(TemplateView):
-    
     template_name = './myhobby/chart.html'
     # Used for the chart information and sprite information
     def get_context_data(self, **kwargs):
@@ -116,7 +115,6 @@ class HobbyChartView(TemplateView):
         
         # Days_back is the number of days prior to today that will be included on graph
         days_back = int(datetime.datetime.today().strftime('%w'))
-        print(days_back)
         
         # Gets an array of times that will go back x number of days
         # (I could not get a format string to work properly)
@@ -163,11 +161,11 @@ class HobbyChartView(TemplateView):
             # append the sad
         else:
             basepath = basepath + ("_content.gif")
-
-
-        # Use the below for the HTML
+        # Use the below for the HTMLs
+        context['form'] = form
         context["fullName"] = basepath
         context["hobby"] = hobby
         context["qs"] = labels
         context["vals"] = times
         return context
+    
