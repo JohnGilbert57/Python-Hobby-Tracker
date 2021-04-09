@@ -138,8 +138,23 @@ a:link, a:visited{
     padding-top: 1.5%;
     padding-left: 0.25%;
 }
+ #OU a:hover {
+    color: rgb(154, 206, 96);
+ }
 .chartContent #sprite{
     transform:scale(3) translateY(-175%);
     float: right;
     padding-right: 8%;
+}
+
+#Week {
+    margin: 0;
+    padding-top: 5%;
+    padding-left: 1%;
+    font-family: georgia, serif;
+    /*KEEP THE TWO LINES BELOW! THE KEEP FOOTER NICE 
+    FOR EVERY BROWSER*/
+    position: relative;
+    color:rgb(0, 104, 72); 
+    font-size: 150%;
 }
