@@ -7,6 +7,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.models import User
+from django_popup_view_field.fields import PopupViewField
 
 class NewHobbyForm(forms.ModelForm):
     class Meta:
@@ -16,6 +17,10 @@ class NewHobbyForm(forms.ModelForm):
             'spriteId',
             'timeLimit'
         ]
+        widgets = {
+            'name': forms.TextInput(attrs={"class": "form-control"}),
+            'spriteId': forms.Select(attrs={"class": "form-control"}),
+        }
         labels = {
             'name': 'Hobby Name',
             'spriteId': 'Sprite Figure',

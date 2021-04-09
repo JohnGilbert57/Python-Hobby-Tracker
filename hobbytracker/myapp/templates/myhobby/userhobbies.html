@@ -1,3 +1,5 @@
+{% load crispy_forms_tags%}
+{% block content %}
 {% load static %}
 <!DOCTYPE >
 <html>
@@ -26,6 +28,7 @@
                 </a>
                 <form method="POST">
                     {% csrf_token %}
+
                     <button type='submit' name="delete" value='{{hobby.id}}'><img src ="{% static 'myapp/img/Vector.png' %}" alt = "Trash Can"/></button>
                 </form>
 
@@ -43,7 +46,7 @@
                 <form action="" method="POST" id = "forms" class = "form-group">
                     <div class = "form-components">
                         {% csrf_token %}
-                        {{ form.as_p }}
+                        {{ form|crispy }}
                     </div>
                     <div id = "bottom-line"></div>
                     <input id = "newHobby" type = 'submit' name = "Create" id = "Create" value = 'Submit' />
@@ -91,3 +94,4 @@
             <div id = "overlay"></div>
     </body>
 </html>  
+{% endblock%}
