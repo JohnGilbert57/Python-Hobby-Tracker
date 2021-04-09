@@ -143,3 +143,61 @@ a:link, a:visited{
     float: right;
     padding-right: 8%;
 }
+
+/*Modal stuff?*/
+.modal{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    border: 1px solid black;
+    border-radius: 10px;
+    z-index: 10;
+    background-color: white;
+    width: 400px;
+    max-width: 80%;
+}
+.modal.active{
+    transform: translate(-50%, -50%) scale(1);
+}
+.modal-header{
+    padding-left: 15px;
+    padding-right: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid black
+}
+.modal-header .title{
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+.modal-header .close-button{
+    cursor: pointer;
+    border:none;
+    outline: none;
+    background-color: white;
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+.form-components{
+    padding: 10px 15px;
+}
+.modal-body #bottom-line{
+    border-bottom: 1px solid black;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
+    width: 100%;
+    margin-bottom: 2.5%;
+}
+#newHobby{
+    background-color: #24A0ED;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-size: 90%;
+    padding: 1.5%;
+    font-family: "Roboto";
+}

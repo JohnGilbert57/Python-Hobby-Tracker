@@ -76,16 +76,46 @@
         <a href = "{% url 'logout' %}">Logout</a> <br>
         <a href = "../userhobbies"> Home </a>
     </div>
+
+
+        <div class = "modalBody" id = "modalBody">
+            <div class = "modal-header">
+                <p class = "title"> Add Time (Hours) </p>
+                <button data-close-button class = "close-button">&times</button>
+            </div>
+            <div class = "modal-body">
+                <form action="" method="POST" id = "forms" class = "form-group">
+                    <div class = "form-components">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                    </div>
+                    <div id = "bottom-line"></div>
+                    <input submit-button id = "newHobby" type = "button" name = "Create" id = "Create" value = 'Submit' />
+                </form>
+            </div>
+        </div>
+
+
+
+    
     <div class = "chartContent">
         <canvas id="myChart" width="900" height="600"></canvas>
         <!--Below is access to the sprite-->
         <img id = "sprite" src= "../../static/myapp/img/sprites/{{fullName}}">
-        <form method="GET" action="addtime">
+
+
+
+
+
+
+
+        
+        {% comment %} <form method="GET" action="addtime">
             {% csrf_token %}
             <div id="addTime">
                 <button type='submit' name="hobby" value='{{hobby.id}}'>Add Time</button>
             </div>
-        </form>
+        </form> {% endcomment %}
     </div>
     <div id = footer>
         <table id = "footerTable">

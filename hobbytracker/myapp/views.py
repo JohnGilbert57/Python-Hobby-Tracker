@@ -33,42 +33,42 @@ def new_user_form(response):
     }
     return render(response, './myhobby/new_user.html', context)
 
-def hobby_time_form(response):
-    if response.user.is_anonymous:
-        return redirect('/login')
-    if response.method == "POST":
-        form = HobbyTimeForm(response.POST)
-        if(form.is_valid()):
-            hobbyid = response.GET.get("hobby")
-            times = []
-            times.append(form.cleaned_data['sunTime'])
-            times.append(form.cleaned_data['monTime'])
-            times.append(form.cleaned_data['tueTime'])
-            times.append(form.cleaned_data['wedTime'])
-            times.append(form.cleaned_data['thuTime'])
-            times.append(form.cleaned_data['friTime'])
-            times.append(form.cleaned_data['satTime'])
+# def hobby_time_form(response):
+#     if response.user.is_anonymous:
+#         return redirect('/login')
+#     if response.method == "POST":
+#         form = HobbyTimeForm(response.POST)
+#         if(form.is_valid()):
+#             hobbyid = response.GET.get("hobby")
+#             times = []
+#             times.append(form.cleaned_data['sunTime'])
+#             times.append(form.cleaned_data['monTime'])
+#             times.append(form.cleaned_data['tueTime'])
+#             times.append(form.cleaned_data['wedTime'])
+#             times.append(form.cleaned_data['thuTime'])
+#             times.append(form.cleaned_data['friTime'])
+#             times.append(form.cleaned_data['satTime'])
 
-            weekday = int(datetime.datetime.today().strftime('%w'))
-            deltas = []
-            for t in times:
-                deltas.append(datetime.timedelta(minutes=t))
+#             weekday = int(datetime.datetime.today().strftime('%w'))
+#             deltas = []
+#             for t in times:
+#                 deltas.append(datetime.timedelta(minutes=t))
 
-            i = 0
-            now = timezone.now()
-            for d in deltas:
-                day_offset = datetime.timedelta(days=(i - weekday))
-                end = now + day_offset
-                start = end - d
-                obj = HobbyTime(startTime=start,endTime=end)
-                obj.hobbyUser = User.objects.get(pk=response.user.id)
-                obj.hobby = Hobby.objects.get(pk=hobbyid)
-                obj.save()
-                i += 1
-            return redirect("/hobbyview?hobbyid=" + hobbyid)
-    else:
-        form = HobbyTimeForm()
-    return render(response, './myhobby/hobby_time.html', {'form': form})
+#             i = 0
+#             now = timezone.now()
+#             for d in deltas:
+#                 day_offset = datetime.timedelta(days=(i - weekday))
+#                 end = now + day_offset
+#                 start = end - d
+#                 obj = HobbyTime(startTime=start,endTime=end)
+#                 obj.hobbyUser = User.objects.get(pk=response.user.id)
+#                 obj.hobby = Hobby.objects.get(pk=hobbyid)
+#                 obj.save()
+#                 i += 1
+#             return redirect("/hobbyview?hobbyid=" + hobbyid)
+#     else:
+#         form = HobbyTimeForm()
+#     return render(response, './myhobby/chart.html', {'form': form})
 
 def hobbiespage(response):
 
@@ -106,12 +106,67 @@ def baseUrl(response):
 class HobbyChartView(TemplateView):
     
     template_name = './myhobby/chart.html'
+
+    def get_hobby_id(self):
+        hobbyid = self.request.GET.get('hobbyid')
+        return hobbyid
+
     # Used for the chart information and sprite information
-    def get_context_data(self, **kwargs):
+    def get_context_data(response, **kwargs):
+
+
+
+
+
+
+
+
+        if response.method == "POST":
+            form = HobbyTimeForm(response.POST)
+            if(form.is_valid()):
+                hobbyid = response.GET.get("hobby")
+                times = []
+                times.append(form.cleaned_data['sunTime'])
+                times.append(form.cleaned_data['monTime'])
+                times.append(form.cleaned_data['tueTime'])
+                times.append(form.cleaned_data['wedTime'])
+                times.append(form.cleaned_data['thuTime'])
+                times.append(form.cleaned_data['friTime'])
+                times.append(form.cleaned_data['satTime'])
+
+                weekday = int(datetime.datetime.today().strftime('%w'))
+                deltas = []
+                for t in times:
+                    deltas.append(datetime.timedelta(minutes=t))
+
+                i = 0
+                now = timezone.now()
+                for d in deltas:
+                    day_offset = datetime.timedelta(days=(i - weekday))
+                    end = now + day_offset
+                    start = end - d
+                    obj = HobbyTime(startTime=start,endTime=end)
+                    obj.hobbyUser = User.objects.get(pk=response.user.id)
+                    obj.hobby = Hobby.objects.get(pk=hobbyid)
+                    obj.save()
+                    i += 1
+        else:
+            form = HobbyTimeForm()
+        
+
+
+
+
+
+
+
+
+
+
 
         # Use the below for the context information for database
         context = super().get_context_data(**kwargs)
-        hobbyid = self.request.GET.get('hobbyid')
+        hobbyid = get_hobby_id()
         hobby = Hobby.objects.get(pk=hobbyid)
         
         # Days_back is the number of days prior to today that will be included on graph
@@ -170,4 +225,6 @@ class HobbyChartView(TemplateView):
         context["hobby"] = hobby
         context["qs"] = labels
         context["vals"] = times
-        return context
+        context["form"] = form
+       # return context
+        return render(response, './myhobby/chart.html', context)
