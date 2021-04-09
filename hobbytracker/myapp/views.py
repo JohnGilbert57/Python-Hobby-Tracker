@@ -162,7 +162,6 @@ class HobbyChartView(TemplateView):
         else:
             basepath = basepath + ("_content.gif")
         # Use the below for the HTMLs
-        context['form'] = form
         context["fullName"] = basepath
         context["hobby"] = hobby
         context["qs"] = labels

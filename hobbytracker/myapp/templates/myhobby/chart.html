@@ -16,7 +16,7 @@
             data: {
                 labels: [{% for t in qs %} '{{ t }}', {% endfor %}],
                 datasets: [{
-                    label: '{{hobby.name}} (Minutes)',
+                    label: '{{hobby.name}} (Hours)',
                     data: [{% for t in vals %} '{{ t }}', {% endfor %}],
                     backgroundColor: [
                         'rgba(0, 104, 72, 0.5)',
