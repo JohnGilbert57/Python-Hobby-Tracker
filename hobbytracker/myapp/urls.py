@@ -4,7 +4,7 @@
 # how we call our functions and sets the URL routes
 from django.contrib import admin
 from django.urls import path, include
-from .views import new_user_form, hobbiespage, baseUrl, HobbyChartView
+from .views import new_user_form, hobbiespage, baseUrl, HobbyChartView, hobby_time_form
 from . import views
 urlpatterns = [
     path('userhobbies/task/', views.task, name = "index"),
@@ -12,5 +12,7 @@ urlpatterns = [
     path('', include("django.contrib.auth.urls")),
     path('createaccount/', views.new_user_form, name = "register"),
     path('userhobbies/', views.hobbiespage),
+    path('hobbyview/', views.HobbyChartView.as_view(), name='home'),
+    path('hobbyview/addtime', views.hobby_time_form, name = 'addtime'),
     path('test/', views.HobbyChartView.as_view(), name='home'),
 ] 

@@ -21,10 +21,12 @@ Ohio University-->
                 <!--For now, this just submits the form, creates the user, and redirects to index-->
                 {% csrf_token %}
                 {{ form|crispy }}
-                <input type = 'submit' name = "Log" id = "Log" value = 'Login' />
-                <br>
-                <br>
-                <a href = "/createaccount">Create Account</a>
+                <div class="inputs">
+                    <input type = 'submit' name = "Log" id = "Log" value = 'Login' />
+                    <br>
+                    <br>
+                    <a href = "/createaccount">Create Account</a>
+                </div>
             </form>
         </div>
     </body>

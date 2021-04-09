@@ -1,0 +1,145 @@
+#addTime button{
+    font-family: georgia, serif;
+    font-size: 100%;
+    padding: 12px 20px; 
+    color: white;
+    background-color:rgb(0, 104, 72); 
+    margin: 0;
+    cursor:pointer;
+    border-radius: 4px;
+    border: none
+}
+#addTime {
+    padding-left: 2%;
+}
+body{
+    margin: 0;
+    padding: 0;
+    font-family: georgia, serif;
+    /*KEEP THE TWO LINES BELOW! THE KEEP FOOTER NICE 
+    FOR EVERY BROWSER*/
+    position: relative;
+    height: 100%;
+    overflow-y: scroll;
+    max-height: 100%;
+}
+#footerTable {
+    font-family: georgia, serif;
+    border-spacing: 50px !important; /*only px seems to work here*/
+    font-size: 100%;
+    width: 30%;
+    
+} 
+
+/*used while making the table*/
+#footerTable td{
+    text-align: left;
+    padding-left: 2%;
+    padding-bottom: 1%;
+    color:rgb(231,236,195);
+}
+#credentials{
+    position: relative;
+    float: right;
+    top: -67px;
+    text-align: right;
+    padding-right: 10px;
+    padding-bottom: 0px;
+    margin: 0;
+    color: white;
+    font-family: georgia, sans-serif;
+}
+#credentials p{
+    padding: 0px;
+    margin: 0px;
+}
+
+/*used for the headings of the table to be bold and different color*/
+#footerTable th{
+    text-align: left;
+    padding-left: 2%;
+    color: rgb(170,138,0);
+}
+
+/*this makes the hyperlinks white*/
+a:link, a:visited{
+    color: rgb(255, 255, 255);
+    background-color: transparent;
+    text-decoration: none;
+}
+/*used when hovering over hyperlink*/
+#footerTable a:hover {
+    color: rgb(154, 206, 96);
+}
+#credentials a:hover {
+    color: rgb(154, 206, 96);
+}
+/*style the header of the website*/
+#header{
+    margin-top: -2%;
+    width: 100%;
+    height: 100px;
+    float: right;
+    /*padding: 200%, 200%;*/
+    background-color:#024230;
+}
+
+/*style of the title of the page*/
+#header p{
+    text-align: center;
+    margin: auto;
+    margin-top: 0%;
+    padding-top: 2.7%;
+    padding-right: 1%;
+    font-size: 230%;
+    color: rgb(255, 255, 255);
+    font-family: georgia, sans-serif;
+}
+
+#hobbies a:link, #hobbies a:visited{
+    color: rgb(0, 0, 0);
+    background-color: transparent;
+    text-decoration: none;
+}
+
+#hobbies a:hover {
+    color: rgb(154, 206, 96);
+}
+
+
+/*styles the footer of the website*/
+#footer{
+    height: 225px; 
+    width: 100%;
+    margin-top: 1.5%;
+    /*have the footer at the bottom and stretch across*/
+
+    /*DO NOT REMOVE THE LINE BELOW THIS; USED FOR FOOTER*/
+    position: relative;
+    /*DO NOT REMOVE THE LINE BELOW THIS; USED FOR FOOTER*/
+
+    /*DO NOT REMOVE THE LINE BELOW THIS; USED FOR FOOTER*/
+    width: 100%;
+    bottom: 0%;
+    color: rgb(255, 255, 255);
+    background-color: #024230;
+    height: 30%;
+    margin-bottom: 0%;
+}
+
+.chartContent{
+    min-height: 75%;
+}
+#footerTable tr{
+    height: 20px;
+}
+#OU{
+    font-family: georgia, sans-serif;
+    padding-top: 1.5%;
+    padding-left: 0.25%;
+}
+.chartContent #sprite{
+    transform:scale(3) translateY(-175%);
+    float: right;
+    padding-right: 8%;
+}

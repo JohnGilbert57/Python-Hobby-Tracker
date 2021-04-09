@@ -22,9 +22,9 @@
             {% for hobby in userHobbies %}
             <div id = hobbyinfo>
                 <!-- look into using POST here-->
-                <a href="/test?hobbyid={{ hobby.id }}">
+                <a href="/hobbyview?hobbyid={{ hobby.id }}">
                     <p style = "padding-bottom: 0.5%;">Hobby: {{ hobby.name }}</p>
-                    <p>Weekly Goal:{{ hobby.timeLimit}}</p>
+                    <p>Weekly Goal: {{ hobby.timeLimit}} hours</p>
                 </a>
                 <form method="POST">
                     {% csrf_token %}
@@ -49,7 +49,7 @@
                         {{ form|crispy }}
                     </div>
                     <div id = "bottom-line"></div>
-                    <input id = "newHobby" type = 'submit' name = "Create" id = "Create" value = 'Submit' />
+                    <input submit-button id = "newHobby" type = "button" name = "Create" id = "Create" value = 'Submit' />
                 </form>
             </div>
         </div>

@@ -1,9 +1,12 @@
 <!--Nathaniel Buchanan
-Ohio University-->
+    Nathan Bennett
+    Ohio University-->
 {% extends 'base.html' %}
 
-{% block title %}Hobby Chart{% endblock title %}
+{% block title %}Hobby Tracker "{{hobby.name}}"{% endblock title %}
+
 {% block scripts %}
+{% load static %}
 
 <script>
     $(document).ready(function(){
@@ -13,7 +16,7 @@ Ohio University-->
         data: {
             labels: [{% for t in qs %} '{{ t }}', {% endfor %}],
             datasets: [{
-                label: '{{hobby.name}} Minutes',
+                label: '{{hobby.name}} (Minutes)',
                 data: [{% for t in vals %} '{{ t }}', {% endfor %}],
                 backgroundColor: [
                     'rgba(0, 104, 72, 0.5)',
@@ -43,8 +46,8 @@ Ohio University-->
             }]
         },
         options: {
-            //Used to make charts fit on entire page
-            responsive: true,
+            //Used to make charts fit on entire page (set to true if so)
+            responsive: false,
             maintainAspectRatio: false,
             scales: {
                 yAxes: [{
@@ -56,9 +59,69 @@ Ohio University-->
         }
     });
 });
+
 </script>
 {% endblock scripts %}
 
 {% block content %}
-    <canvas id="myChart" width="100" height="100"></canvas>
+    <head>
+        <link rel = "stylesheet" type = "text/css" href="{% static 'myapp/css/chart.css' %}">
+    </head>
+    
+    <div id = header>
+        <p>Python Hobby Tracker</p>  
+    </div>
+    <div id = credentials>
+        <p>{{user.username}}</p>
+        <a href = "{% url 'logout' %}">Logout</a> <br>
+        <a href = "../userhobbies"> Home </a>
+    </div>
+    <div class = "chartContent">
+        <canvas id="myChart" width="900" height="600"></canvas>
+        <!--Below is access to the sprite-->
+        <img id = "sprite" src= "../../static/myapp/img/sprites/{{fullName}}">
+        <form method="GET" action="addtime">
+            {% csrf_token %}
+            <div id="addTime">
+                <button type='submit' name="hobby" value='{{hobby.id}}'>Add Time</button>
+            </div>
+        </form>
+    </div>
+    <div id = footer>
+        <table id = "footerTable">
+            <tr>
+                <th>Name</th> <!--The name of the individual-->
+                <th>Email</th> <!--Their email (with hyperlink)-->
+                <th>GitHub ID</th> <!--Their GitHub ID (with hyperlink)-->
+            </tr>
+            <tr>
+                <td>Johnny Gilbert</td>
+                <td><a href="mailto: jg480318@ohio.edu">jg480318@ohio.edu</a></td>
+                <td><a href=https://github.com/JohnGilbert57>JohnGilbert57</a></td>
+            </tr>
+            <tr>
+                <td>Nathan Bennett</td>
+                <td><a href="mailto: nb566818@ohio.edu">nb566818@ohio.edu</a></td>
+                <td><a href=https://github.com/nbennett2019>nbennett2019</a></td>
+            </tr>
+            <tr>
+                <td>Nathaniel Buchanan</td>
+                <td><a href="mailto: nb333218@ohio.edu">nb333218@ohio.edu</a></td>
+                <td><a href=https://github.com/NathanielBuchanan>NathanielBuchanan</a></td></td>
+            </tr>
+            <tr>
+                <td>Spencer Deuscher</td>
+                <td><a href="mailto: sd621517@ohio.edu">sd621517@ohio.edu</a></td>
+                <td><a href=https://github.com/SDeuscher>SDeuscher</a></td></td>
+            </tr>
+            <tr>
+                <td>Taylor Miller</td>
+                <td><a href="mailto: tm408518@ohio.edu">tm408518@ohio.edu</a></td>
+                <td><a href=https://github.com/tm408518>tm408518</a></td>
+            </tr>
+        </table>
+        <!--Ohio University website-->
+        <p id = "OU"><a href=https://www.ohio.edu>&nbsp&nbspOhio University<a></p>
+    </div>
 {% endblock content %}
+
