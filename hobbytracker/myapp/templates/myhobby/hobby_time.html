@@ -1,17 +1,31 @@
 <!--This is edited by:
 Nathan Bennett
+Nathaniel Buchanan
 Ohio University-->
+{% extends 'base.html' %}
+{% load crispy_forms_tags%}
+{% block content %}
 {% load static %}
 <!DOCTYPE >
 <html>
-    <!-- Needs Styling -->
+    <head>
+        <script type = 'text/javascript' defer src="{% static 'myapp/js/addTime.js' %}"></script>
+        <link rel = "stylesheet" type = "text/css" href="{% static 'myapp/css/hobby_time.css' %}">
+    </head>
     <body>
-        <div id = "formComponents">  
+        <div id = "formComponents"> 
+            <img>
+                <img id = logo src = "{% static 'myapp/img/background/logo3.png' %}"width = "64" height="64" alt = "Hobby Tracker" class="center">
+            </img> 
+            <br>
             <form action="" method="POST" id = "forms" class = "form-group">
                 {% csrf_token %}
-                {{ form.as_p }}
-                <input type = 'submit' name = "Add" id = "Add" value = 'Add Time' />
+                {{ form|crispy }}
+                <input submit-button type = 'button' name = "Add" id = "Add" value = 'Confirm Time' />
             </form>
+                <p id="txt">*Note: Time Unit = Hours</p>
         </div>
     </body>
 </html>
+
+{% endblock %}
