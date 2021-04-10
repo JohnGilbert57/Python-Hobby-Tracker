@@ -31,9 +31,11 @@
     - Checking version: "python3.7 --version"
     - Expect result: "Python 3.7.3"
 # Installing Django Unix/Linux Systems
-    - Run: "python3.7 -m pip3 install Django"
+    - Run: "python3 -m pip3 install Django"
     - Check Version: "django-admin.py version"
     - Expected result: "3.1.6"
+# Installing Crispy Forms Unix/Linux Systems
+    - pip3 install django-crispy-forms
 # Deploying the app
     - Cloning the Repo: "git clone https://github.com/OU-CS3560/Python-Hobby-Tracker.git"
     - Getting to the proper directory: "cd hobbytracker"
