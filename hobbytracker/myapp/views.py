@@ -127,7 +127,7 @@ class HobbyChartView(TemplateView):
         labels = []
         # Create the labels for the chart
         for t in times_raw:
-            labels.append(datetime.datetime.strptime(t.hobbydate,'%Y-%m-%d').date().strftime('%A %B %-d'))
+            labels.append(datetime.datetime.strptime(t.hobbydate,'%Y-%m-%d').date().strftime('%A, %B %-d'))
         
         # Gets first nonzero time logged from db
         first_time_raw = HobbyTime.objects.raw('SELECT id,date(startTime) startdate FROM myapp_hobbytime WHERE hobby_id='+str(hobby.id)+' AND (julianday(endTime) - julianday(startTime))*24*60 > 0  ORDER BY startTime LIMIT 1')
