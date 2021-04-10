@@ -128,7 +128,7 @@ class HobbyChartView(TemplateView):
         labels = []
         # Create the labels for the chart
         for t in times_raw:
-            labels.append(t.hobbydate)
+            labels.append(datetime.datetime.strptime(t.hobbydate,'%Y-%m-%d').date().strftime('%A %B %-d'))
 
         # This will get the total amount of mintutes the user has done
         totalMinutes = 0
