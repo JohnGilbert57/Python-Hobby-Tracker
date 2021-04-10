@@ -117,7 +117,6 @@ class HobbyChartView(TemplateView):
         days_back = int(datetime.datetime.today().strftime('%w'))
         
         # Gets an array of times that will go back x number of days
-        # (I could not get a format string to work properly)
         times_raw = HobbyTime.objects.raw('SELECT id,SUM((julianday(endTime) - julianday(startTime)) * 24 * 60) totalmins,date(endTime) hobbydate FROM myapp_hobbytime WHERE hobby_id='+ str(hobby.id) +' AND startTime>=date(\'now\',\'-'+ str(days_back) +' day\') AND endTime<=date(\'now\',\''+ str(7 - days_back) +' day\') GROUP BY date(startTime)')
 	
         times = []
@@ -129,34 +128,66 @@ class HobbyChartView(TemplateView):
         # Create the labels for the chart
         for t in times_raw:
             labels.append(datetime.datetime.strptime(t.hobbydate,'%Y-%m-%d').date().strftime('%A %B %-d'))
+        
+        # Gets first nonzero time logged from db
+        first_time_raw = HobbyTime.objects.raw('SELECT id,date(startTime) startdate FROM myapp_hobbytime WHERE hobby_id='+str(hobby.id)+' AND (julianday(endTime) - julianday(startTime))*24*60 > 0  ORDER BY startTime LIMIT 1')
 
-        # This will get the total amount of mintutes the user has done
-        totalMinutes = 0
-        for i in times:
-            totalMinutes = totalMinutes + i
+        first_time_str = "" 
+        for f in first_time_raw:
+             first_time_str = f.startdate
 
-        # Find the target time total that the user should have for their hobby
-        targetTimeTotal = hobby.timeLimit * (days_back + 1)
-
-        percentDifference = (float(targetTimeTotal - totalMinutes)) / float(targetTimeTotal) * 100.0
-
-        # Consider days in period, number in days in period * controlLimit (percentages)
-        # Compare to a percentage value
 
         # Using a simple path that will be the first half of the name of the sprite (e.g. Rufus)
         basepath = hobby.spriteId.imageName
+
+        weekly_percent = 50
+
+        # If the user has logged time
+        if(first_time_str != ""):
+            first_time = datetime.datetime.strptime(first_time_str, '%Y-%m-%d')
+        
+            todays_date = datetime.datetime.today().replace(hour=0, minute=0, second=0, microsecond=0)
+            day_offset = datetime.timedelta(days=(days_back))
+            sunday_date = todays_date - day_offset
+            
+            days_in_period = days_back + 1 
+
+            # if the user begam their hobby after sunday of this week
+            if(first_time > sunday_date):
+                days_in_period = days_in_period - (first_time - sunday_date).total_seconds()/86400
+        
+         
+            # Find the target time total that the user should have for their hobby
+            target_daily_time = hobby.timeLimit/7
+
+            daily_percentages = []
+            i = 0
+            for t in times:
+                # Prevent future dates from being added to total
+                if(target_daily_time > 0 and i <= days_back):
+                    daily_percentages.append(t/target_daily_time*100)
+                else:
+                    daily_percentages.append(0)
+                i += 1
+            
+            total_percentage = 0
+            for d in daily_percentages:
+                total_percentage = total_percentage + d
+
+            weekly_percent = total_percentage/days_in_period
+            
         
         # Choose pet met
-        if(percentDifference < 45.0):
+        if(weekly_percent >= 75.0):
             # append happy to basepath
             # print("Happy")
             basepath = basepath + ("_happy.gif")
-        elif (percentDifference >= 45.0 and percentDifference < 75.0):
+        elif (weekly_percent >= 45.0 and weekly_percent < 75.0):
             # append content to basepath
             # print("Content")
             basepath = basepath + ("_content.gif")
-        elif (percentDifference >= 75.0 and percentDifference < 100):
-           # print("Sad")
+        elif (weekly_percent > 0.0 and weekly_percent < 45.0):
+            # print("Sad")
             basepath = basepath + ("_sad.gif")
             # append the sad
         else:
