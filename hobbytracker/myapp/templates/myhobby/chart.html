@@ -71,13 +71,14 @@
         <div id = header>
             <p>Python Hobby Tracker</p>  
         </div>
+        <h2 id = "Week" >Weekly Goal: {{hobby.timeLimit}} Hours, Time Remaining {{timeLog}} Hours</h2>
         <div id = credentials>
             <p>{{user.username}}</p>
             <a href = "{% url 'logout' %}">Logout</a> <br>
             <a href = "../userhobbies"> Home </a>
         </div>
         <div class = "chartContent">
-            <h2 id = "Week" >Weekly Goal: {{hobby.timeLimit}} Hours</h2>
+            
             <canvas id="myChart" width="900" height="600"></canvas>
             <!--Below is access to the sprite-->
             <img id = "sprite" src= "../../static/myapp/img/sprites/{{fullName}}">

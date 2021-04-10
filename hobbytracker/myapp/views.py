@@ -87,7 +87,11 @@ def hobbiespage(response):
         if Hobby.objects.filter(pk=delete_key).count() > 0:
             target = Hobby.objects.get(pk=delete_key)
             target.delete()
-
+    if response.method == "POST" and 'deleteuser' in response.POST:
+        username = response.user.username
+        u = User.objects.get(username = username)
+        u.delete()
+        return redirect('/login')
     # Get all hobbies for current user
     userHobbies = Hobby.objects.filter(hobbyUser=response.user)
     context = {
@@ -192,7 +196,13 @@ class HobbyChartView(TemplateView):
             # append the sad
         else:
             basepath = basepath + ("_content.gif")
+        totalMinutes = 0
+        for i in times:
+            totalMinutes = totalMinutes + i
+        if(totalMinutes >= hobby.timeLimit):
+            totalMinutes = hobby.timeLimit
         # Use the below for the HTMLs
+        context["timeLog"] = hobby.timeLimit - totalMinutes
         context["fullName"] = basepath
         context["hobby"] = hobby
         context["qs"] = labels
