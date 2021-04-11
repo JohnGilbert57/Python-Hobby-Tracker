@@ -31,6 +31,7 @@ DEBUG = True
 # This will need to change if public IP changes
 ALLOWED_HOSTS = ["69.133.64.166","192.168.1.195","127.0.0.1","localhost"]
 
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "hobbytracker.settings")
 
 # Application definition
 

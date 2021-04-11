@@ -1,15 +1,15 @@
+"""Created forms that will be called to pass forms to the html"""
 # Johnny Gilbert
 # Ohio University
 # the format for the user login; creates the objects basesd upon the models and sets the data
 from django import forms
-from .models import Hobby, HobbyTime
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.forms import AuthenticationForm
-from django.contrib.auth import login, authenticate
-from django.contrib.auth.models import User
 
+from django.contrib.auth.models import User
+from .models import Hobby
 
 class HobbyTimeForm(forms.Form):
+    """adding time to a hobby form"""
     sunTime = forms.FloatField(label='Sunday',initial=0)
     monTime = forms.FloatField(label='Monday',initial=0)
     tueTime = forms.FloatField(label='Tuesday',initial=0)
@@ -19,6 +19,7 @@ class HobbyTimeForm(forms.Form):
     satTime = forms.FloatField(label='Saturday',initial=0)
 
 class NewHobbyForm(forms.ModelForm):
+    """creating a new hobby"""
     class Meta:
         model = Hobby
         fields = [
@@ -37,6 +38,7 @@ class NewHobbyForm(forms.ModelForm):
         }
 
 class NewUserForm(UserCreationForm):
+    """login form"""
     class Meta:
         model = User
         fields = ["username"]
@@ -46,5 +48,4 @@ class NewUserForm(UserCreationForm):
         labels = {
             'username': 'Username',
         }
-# class TimeForm(models.ModelForm):
-
+        
