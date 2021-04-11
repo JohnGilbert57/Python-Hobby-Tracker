@@ -37,20 +37,22 @@ input[type="button"]{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50% ) scale(1);
-    padding-top: 2%;
-    padding-left: 3%;
-    padding-bottom: 2%;
-    padding-right: 3%;
+    padding-top: 1%;
+    padding-left: 2%;
+    padding-bottom: 1%;
+    padding-right: 2%;
     border-radius: 10%;
     color: #00694E;;
     background-color: white;
     width: 30%;
+    height:97%;
 }
 
 /*center the information*/
 #formComponents input{
     text-align: center;
     width: 100%;
+    padding: 1.5%;
 }
 
 /*used for message at bottom*/
@@ -63,8 +65,19 @@ img{
     display: block;
     margin-left: auto;
     margin-right: auto;
+    padding-bottom: 0;
+    
 }
 /* Hide the asterisk from the crispy forms */
 .asteriskField {
     display: none;
+}
+#id_sunTime{
+    padding-bottom: 0;
+}
+form{
+    padding-bottom: 0;
+}
+p{
+    padding:0;
 }

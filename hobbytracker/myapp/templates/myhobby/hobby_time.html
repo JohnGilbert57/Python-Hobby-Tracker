@@ -19,11 +19,11 @@ Ohio University-->
             </img> 
             <br>
             <form action="" method="POST" id = "forms" class = "form-group">
+                <p>WARNING: Time Logged Against Future Days Will Not Be Reflected Until Said Day. Time Unit = Hours</p>
                 {% csrf_token %}
                 {{ form|crispy }}
                 <input submit-button type = 'button' name = "Add" id = "Add" value = 'Confirm Time' />
             </form>
-                <p id="txt">*Note: Time Unit = Hours</p>
         </div>
     </body>
 </html>
