@@ -37,7 +37,7 @@
 # Installing Crispy Forms Unix/Linux Systems
     - pip3 install django-crispy-forms
 # Installing django-speedinfo(profiling)
-    - pip install django-speedinfo
+    - pip3 install django-speedinfo
 # Deploying the app
     - Cloning the Repo: "git clone https://github.com/OU-CS3560/Python-Hobby-Tracker.git"
     - Getting to the proper directory: "cd hobbytracker"
