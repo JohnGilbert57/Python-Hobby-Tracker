@@ -27,15 +27,17 @@
     - Installing Prerequisites: "sudo apt install software-properties-common"
     - Adding DeadSnakes PPA: "sudo add-apt-repository ppa:deadsnakes/ppa"
     - Press [Enter] when prompted
-    - Installing python: "sudo apt install python3.7"
-    - Checking version: "python3.7 --version"
-    - Expect result: "Python 3.7.3"
+    - Installing python: "sudo apt install python3.6"
+    - Checking version: "python3 --version"
+    - Expect result: "Python 3.6.9 or equivalency 3.6.<int>"
 # Installing Django Unix/Linux Systems
     - Run: "python3 -m pip3 install Django"
     - Check Version: "django-admin.py version"
     - Expected result: "3.1.6"
 # Installing Crispy Forms Unix/Linux Systems
     - pip3 install django-crispy-forms
+# Installing django-speedinfo(profiling)
+    - pip install django-speedinfo
 # Deploying the app
     - Cloning the Repo: "git clone https://github.com/OU-CS3560/Python-Hobby-Tracker.git"
     - Getting to the proper directory: "cd hobbytracker"

@@ -45,11 +45,20 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'myapp.apps.MyappConfig',
     'crispy_forms',
-
+    'speedinfo',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
+CACHES = {
+    "default": {
+        "BACKEND": "speedinfo.backends.proxy_cache",
+        "CACHE_BACKEND": "django.core.cache.backends.filebased.FileBasedCache",
+        "LOCATION": "/var/tmp/django_cache",
+    }
+}
+
+SPEEDINFO_STORAGE = "speedinfo.storage.cache.storage.CacheStorage"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -59,6 +68,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'speedinfo.middleware.ProfilerMiddleware'
 ]
 
 ROOT_URLCONF = 'hobbytracker.urls'
