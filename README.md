@@ -46,3 +46,5 @@
       and type "127.0.0.1:8000" to access the app.
 # GitHub Repository
     - https://github.com/OU-CS3560/Python-Hobby-Tracker.git
+# Accessing Remote Application
+    - 69.133.64.166

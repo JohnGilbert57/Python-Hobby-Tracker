@@ -49,10 +49,7 @@ def hobby_time_form(response):
                 for x in range(len(times)):
                     if times_raw[x].totalmins != 0.0 and times[x] != 0:
                         tmp = times[x]
-                        print(tmp)
-                        print(times_raw[x].totalmins)
                         times[x] = tmp - times_raw[x].totalmins
-                        print(times[x])
                         deltas.append(datetime.timedelta(minutes=times[x]))
                     else:
                         deltas.append(datetime.timedelta(minutes=times[x]))

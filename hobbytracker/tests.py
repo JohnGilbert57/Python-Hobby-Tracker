@@ -29,8 +29,8 @@ class HobbyTest(TestCase):
         user = User.objects.create(username = "JohnnyGilbert57")
         sprite = Sprite.objects.create(spriteName = "alien")
         hobbyTime.hobby = Hobby.objects.create(hobbyUser = user, name = "Workout", timeLimit = 1, spriteId = sprite)
-        hobbyTime.startTime = 1
-        hobbyTime.endTime = 2
+        hobbyTime.startTime = "2021-04-14 07:27"
+        hobbyTime.endTime = "2021-04-12 08:00"
         hobbyTime.save()
         record = HobbyTime.objects.get(pk=1)
         self.assertEqual(record, hobbyTime)
@@ -47,7 +47,7 @@ class SpriteTest(TestCase):
         self.assertEqual(record, sprite)
 # Taylor Miller
 # Unit Testing on the Sprite Model
-class SpriteTest(TestCase):
+class DifferentSpriteTest(TestCase):
     def test_fields(self):
         sprite = Sprite()
         sprite.spriteName = "LandShark"
@@ -57,7 +57,7 @@ class SpriteTest(TestCase):
         self.assertEqual(record,sprite)
 #Test: python3 manage.py test
 #Name: Spencer Deuscher
-class HobbyTest(TestCase):
+class DifferentHobbyTest(TestCase):
     def test_fields(self):
         hobbyTime = HobbyTime()
         user = User.objects.create(username = "SDeuscher")
