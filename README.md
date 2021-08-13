@@ -22,7 +22,7 @@
     HTML, Django, and potentially JavaScript. Furthermore
     this program will work as a webapp that runs
     in a local environment.
-# Installing Python 3.7 Unix/Linux Systems
+# Installing Python 3.6 Unix/Linux Systems
     - Updating Package List: "sudo apt update"
     - Installing Prerequisites: "sudo apt install software-properties-common"
     - Adding DeadSnakes PPA: "sudo add-apt-repository ppa:deadsnakes/ppa"
@@ -46,5 +46,5 @@
       and type "127.0.0.1:8000" to access the app.
 # GitHub Repository
     - https://github.com/OU-CS3560/Python-Hobby-Tracker.git
-# Accessing Remote Application
+# Accessing Remote Application (not active)
     - 69.133.64.166
